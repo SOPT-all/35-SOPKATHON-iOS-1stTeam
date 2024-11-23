@@ -175,13 +175,15 @@ extension CustomQuestionView {
 extension CustomQuestionView : UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-           let currentText = textView.text ?? ""
-           guard let stringRange = Range(range, in: currentText) else {
-               return false
-           }
+            let currentText = textView.text ?? ""
+            guard let stringRange = Range(range, in: currentText) else {
+                return false
+            }
+            let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+            textCountLabel.text = "(\(changedText.count)/100)"
            
-           let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
-           return updatedText.count <= 100 // 100자 이하일 때만 입력 허용
+            let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+            return updatedText.count <= 100
        }
 
 }
