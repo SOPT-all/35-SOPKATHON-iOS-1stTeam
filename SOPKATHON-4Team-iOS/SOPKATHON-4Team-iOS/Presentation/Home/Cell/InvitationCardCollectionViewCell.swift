@@ -15,6 +15,7 @@ class InvitationCardCollectionViewCell: UICollectionViewCell {
     // MARK: - UI Components
     
     private let titleLabel = UILabel()
+    private let backgroundImageView = UIImageView()
 
     // MARK: - View Life Cycle
 
@@ -30,30 +31,44 @@ class InvitationCardCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    func configure(with answer: Answer) {
+        titleLabel.text = "From. \(answer.questionnaireOwner)"
+        configureBackgroundImage(for: answer.theme)
+    }
+
+    private func configureBackgroundImage(for theme: Int) {
+        switch theme {
+        case 1:
+            backgroundImageView.image = .cardImage1
+        case 2:
+            backgroundImageView.image = .cardImage2
+        case 3:
+            backgroundImageView.image = .cardImage3
+        default:
+            backgroundImageView.image = .topLogo
+        }
+    }
+    
     // MARK: - UI&Layout
 
     private func setStyle() {
-        backgroundColor = .gray
-        
         contentView.do {
-            $0.makeBorder(
-                width: 1,
-                color: .gray,
-                cornerRadius: 10
-            )
-            $0.backgroundColor = .white
+            $0.layer.cornerRadius = 10
         }
         
         titleLabel.do {
-            $0.text = "누구의 초대장"
             $0.font = .systemFont(ofSize: 16, weight: .bold)
-            $0.textColor = .black
+            $0.textColor = .white
         }
         
+        backgroundImageView.do {
+            $0.layer.cornerRadius = 10
+        }
     }
 
     private func setHierarchy() {
-        contentView.addSubview(titleLabel)
+        contentView.addSubview(backgroundImageView)
+        backgroundImageView.addSubview(titleLabel)
     }
 
     private func setLayout() {
@@ -61,8 +76,15 @@ class InvitationCardCollectionViewCell: UICollectionViewCell {
             $0.edges.equalToSuperview()
         }
         
+        backgroundImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+            $0.width.height.equalTo(140)
+        }
+        
         titleLabel.snp.makeConstraints {
-            $0.center.equalToSuperview()
+            $0.top.equalToSuperview().offset(12)
+            $0.leading.equalToSuperview().offset(15)
         }
     }
+    
 }

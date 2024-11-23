@@ -75,8 +75,31 @@ class OnboardingViewController : UIViewController {
     }
     
     func postNickname() {
-        let nickname = nicknameTextField.text ?? ""
-        // 닉네임 서버 Post 통신
+        let nickname = nicknameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
+        
+        guard !nickname.isEmpty else {
+            // 빈 닉네임 처리
+            return
+        }
+        
+        UserManager.shared.signIn(nickName: nickname) { [weak self] result in
+            guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                switch result {
+                case .success(true):
+                    // 로그인 성공 시 메인 화면으로 이동
+                    let mainViewController = MainViewController()
+                    let navigationController = UINavigationController(rootViewController: mainViewController)
+                    navigationController.modalPresentationStyle = .fullScreen
+                    self.present(navigationController, animated: true, completion: nil)
+                case .failure(let error):
+                    // 로그인 실패 시 에러 메시지 출력
+                    print(error.localizedDescription)
+                case .success(false):
+                    print("")
+                }
+            }
+        }
     }
-    
 }
