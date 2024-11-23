@@ -13,19 +13,45 @@ import Then
 class SplashViewController : UIViewController {
     
     let splashImageView = UIImageView()
+    let splashNameImageView = UIImageView()
+    let EffectImageView = UIImageView()
     
     override func viewDidLoad() {
-        view.addSubview(splashImageView)
+        view.addSubviews(splashImageView, splashNameImageView, EffectImageView)
         
         splashImageView.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
+            $0.top.equalToSuperview().offset(243)
+            $0.centerX.equalToSuperview()
             $0.width.equalTo(214)
             $0.height.equalTo(243)
+        }
+        
+        splashNameImageView.snp.makeConstraints {
+            $0.top.equalTo(splashImageView.snp.bottom)
+            $0.centerX.equalToSuperview()
+            $0.width.height.equalTo(143)
+        }
+        
+        EffectImageView.snp.makeConstraints{
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
         
         view.backgroundColor = UIColor(resource: .background)
         splashImageView.do {
             $0.image = UIImage(resource: .splashLogo)
+            $0.clipsToBounds = true
+            $0.contentMode = .scaleAspectFill
+        }
+        
+        splashNameImageView.do{
+            $0.image = UIImage(resource: .splashNameLogo)
+            $0.clipsToBounds = true
+            $0.contentMode = .scaleAspectFill
+        }
+        
+        EffectImageView.do{
+            $0.image = UIImage(resource: .backgroundEffect)
             $0.clipsToBounds = true
             $0.contentMode = .scaleAspectFill
         }
