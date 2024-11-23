@@ -127,11 +127,19 @@ class ResultView: UIView {
             UIPasteboard.general.string = code
             
             copyCompletedButton.isHidden = false
+            copyCompletedButton.alpha = 0
+            
+            UIView.animate(withDuration: 0.3) {
+                self.copyCompletedButton.alpha = 1
+            }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                self.copyCompletedButton.isHidden = true
+                UIView.animate(withDuration: 0.3, animations: {
+                    self.copyCompletedButton.alpha = 0
+                }) { _ in
+                    self.copyCompletedButton.isHidden = true
+                }
             }
         }
     }
-    
 }
