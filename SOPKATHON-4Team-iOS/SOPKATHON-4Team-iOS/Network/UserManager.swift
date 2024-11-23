@@ -9,10 +9,6 @@ import Foundation
 
 import Moya
 
-struct UserData: Codable {
-    let id: Int
-}
-
 enum FTError: Error {
     case networkFail
     case etc
@@ -41,7 +37,7 @@ final class UserManager {
                 let status = result.statusCode
                 if 200..<300 ~= status {
                     do {
-                        let responseDto = try result.map(BaseResponse<UserData>.self)
+                        let responseDto = try result.map(BaseResponse<AuthAPI>.self)
                         guard let data = responseDto.data else {
                             completion(.failure(.networkFail))
                             return
