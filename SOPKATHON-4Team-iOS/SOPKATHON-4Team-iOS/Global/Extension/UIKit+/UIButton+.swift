@@ -21,4 +21,14 @@ extension UIButton {
         self.clipsToBounds = true
         self.setBackgroundImage(colorImage, for: state)
     }
+    
+    func makeOrangeButton(title: String) {
+        self.do {
+            $0.setTitle(title, for: .normal)
+            $0.setTitleColor(.white, for: .normal)
+            $0.titleLabel?.font = .bodyB18
+            $0.backgroundColor = UIColor(resource: .tpOrange)
+            $0.layer.cornerRadius = 8
+        }
+    }
 }

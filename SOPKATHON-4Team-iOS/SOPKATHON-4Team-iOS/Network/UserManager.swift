@@ -43,6 +43,7 @@ final class UserManager {
                             return
                         }
                         
+                        self.nickName = nickName
                         self.userId = data.memberId
                         
                         completion(.success(true))
