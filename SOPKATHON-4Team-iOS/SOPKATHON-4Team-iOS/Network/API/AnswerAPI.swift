@@ -11,6 +11,10 @@ struct AnswerListResponse: Codable {
     let answerList: [Answer]
 }
 
+struct AnswerCountResponse: Codable {
+    let answerCount:Int
+}
+
 struct Answer: Codable {
     let theme: Int
     let questionnaireOwner: String
