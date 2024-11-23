@@ -23,7 +23,9 @@ class SplashViewController : UIViewController {
             $0.height.equalTo(243)
         }
         
+        view.backgroundColor = UIColor(resource: .background)
         splashImageView.do {
+            $0.image = UIImage(resource: .splashLogo)
             $0.clipsToBounds = true
             $0.contentMode = .scaleAspectFill
         }
