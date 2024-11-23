@@ -12,11 +12,14 @@ import Then
 
 class OnboardingViewController : UIViewController {
     
-    var nicknameLabel : UILabel = UILabel()
+    let nicknameLabel = LabelFactory.build(text: "닉네임을 입력하세요",
+                                       font: .titleB24,
+                                       textColor: .black,
+                                       textAlignment: .center)
     
-    var nicknameTextField : UITextField = UITextField()
+    let nicknameTextField : UITextField = UITextField()
     
-    var startButton: UIButton = UIButton()
+    let startButton: UIButton = UIButton()
     
     override func viewDidLoad() {
         setStyle()
@@ -52,11 +55,6 @@ class OnboardingViewController : UIViewController {
     func setStyle() {
         view.backgroundColor = UIColor(resource: .background)
         navigationItem.hidesBackButton = true
-        
-        nicknameLabel = LabelFactory.build(text: "닉네임을 입력하세요",
-                                           font: .titleB24,
-                                           textColor: .black,
-                                           textAlignment: .center)
         
         nicknameTextField.do {
             $0.backgroundColor = .white
