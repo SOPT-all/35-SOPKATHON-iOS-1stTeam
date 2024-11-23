@@ -46,9 +46,9 @@ class ResultView: UIView {
     private var copyCompletedButton: UIButton = {
         let button = UIButton()
         button.setTitle("복사 완료", for: .normal)
-        button.backgroundColor = UIColor(red: 1, green: 0.499, blue: 0.444, alpha: 0.5)
+        button.backgroundColor = .tpOrange.withAlphaComponent(0.5)
         button.layer.cornerRadius = 20
-        button.setTitleColor(.label, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.bodyR14
         button.isHidden = true
         return button
@@ -59,9 +59,9 @@ class ResultView: UIView {
         font: UIFont.bodyB18,
         cornerRadius: 8
     ).setButtonStatus(
-        normalColor: UIColor(red: 1, green: 0.499, blue: 0.444, alpha: 1),
+        normalColor: .tpOrange,
         normalTextColor: .white,
-        disableColor: UIColor(red: 0.565, green: 0.569, blue: 0.592, alpha: 1),
+        disableColor: .gray500,
         disableTextColor: .white
     )
     

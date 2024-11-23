@@ -20,7 +20,7 @@ class ResultViewController: UIViewController {
     }
     
     private func setStyle() {
-        self.view.backgroundColor = UIColor.systemBackground
+        self.view.backgroundColor = .background
     }
     
     private func setUI() {

@@ -15,7 +15,7 @@ class InputView: UIView {
         let label = UILabel()
         label.text = "초대 코드를 입력하세요"
         label.font = UIFont.titleB24
-        label.textColor = UIColor(red: 0.122, green: 0.141, blue: 0.153, alpha: 1)
+        label.textColor = .black
         return label
     }()
     
@@ -23,9 +23,9 @@ class InputView: UIView {
         let textField = UITextField()
         textField.placeholder = ""
         textField.clearButtonMode = .whileEditing
-        textField.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        textField.textColor = .black
         textField.font = UIFont.bodyR14
-        textField.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        textField.backgroundColor = .white
         textField.layer.cornerRadius = 8
         textField.textAlignment = .center
         return textField
@@ -34,9 +34,9 @@ class InputView: UIView {
     private var warningButton: UIButton = {
         let button = UIButton()
         button.setTitle("초대코드가 유효하지 않습니다", for: .normal)
-        button.backgroundColor = UIColor(red: 1, green: 0.499, blue: 0.444, alpha: 0.5)
+        button.backgroundColor = .tpOrange.withAlphaComponent(0.5)
         button.layer.cornerRadius = 20
-        button.setTitleColor(.label, for: .normal)
+        button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.bodyR14
         button.isHidden = true
         return button
@@ -47,9 +47,9 @@ class InputView: UIView {
         font: UIFont.bodyB18,
         cornerRadius: 8
     ).setButtonStatus(
-        normalColor: UIColor(red: 1, green: 0.499, blue: 0.444, alpha: 1),
+        normalColor: .tpOrange,
         normalTextColor: .white,
-        disableColor: UIColor(red: 0.565, green: 0.569, blue: 0.592, alpha: 1),
+        disableColor: .gray600,
         disableTextColor: .white
     )
     
