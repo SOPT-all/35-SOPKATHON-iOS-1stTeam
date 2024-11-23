@@ -20,9 +20,9 @@ class CustomQuestionView: UIView {
     
     var textCountLabel: UILabel = UILabel()
     
-    var trueButton: UIButton = UIButton()
+    lazy var trueButton: CustomButton = CustomButton(title: "true")
     
-    var falseButton: UIButton = UIButton()
+    lazy var falseButton: CustomButton = CustomButton(title: "true")
     
     private var questionType: QuestionType
     
@@ -98,6 +98,14 @@ class CustomQuestionView: UIView {
             $0.numberOfLines = 0
         }
         
+        trueButton
+            .setEnabled(false)
+            .setButtonStatus(normalColor: .red, normalTextColor: .white, disableColor: .gray, disableTextColor: .black)
+        
+        falseButton
+            .setEnabled(false)
+            .setButtonStatus(normalColor: .red, normalTextColor: .white, disableColor: .gray, disableTextColor: .black)
+        
     }
     
 }
@@ -112,6 +120,5 @@ extension CustomQuestionView {
             questionTextLabel.text = text
         }
     }
-    
     
 }
