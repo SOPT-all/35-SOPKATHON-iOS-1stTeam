@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		713A31A42CEF4EAF00ACFB41 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 713A31A32CEF4EAF00ACFB41 /* SnapKit */; };
-		713A31A62CEF4EAF00ACFB41 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 713A31A52CEF4EAF00ACFB41 /* SnapKit-Dynamic */; };
 		713A31A92CEF4EBA00ACFB41 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 713A31A82CEF4EBA00ACFB41 /* Then */; };
 		713A31AC2CEF4F5F00ACFB41 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 713A31AB2CEF4F5F00ACFB41 /* Kingfisher */; };
 		713A31AF2CEF4F9E00ACFB41 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 713A31AE2CEF4F9E00ACFB41 /* Moya */; };
+		71653F602CF196FB006BB1EF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71653F5F2CF196FB006BB1EF /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,10 +44,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				713A31AC2CEF4F5F00ACFB41 /* Kingfisher in Frameworks */,
-				713A31A42CEF4EAF00ACFB41 /* SnapKit in Frameworks */,
+				71653F602CF196FB006BB1EF /* SnapKit in Frameworks */,
 				713A31A92CEF4EBA00ACFB41 /* Then in Frameworks */,
 				713A31AF2CEF4F9E00ACFB41 /* Moya in Frameworks */,
-				713A31A62CEF4EAF00ACFB41 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,11 +89,10 @@
 			);
 			name = "SOPKATHON-4Team-iOS";
 			packageProductDependencies = (
-				713A31A32CEF4EAF00ACFB41 /* SnapKit */,
-				713A31A52CEF4EAF00ACFB41 /* SnapKit-Dynamic */,
 				713A31A82CEF4EBA00ACFB41 /* Then */,
 				713A31AB2CEF4F5F00ACFB41 /* Kingfisher */,
 				713A31AE2CEF4F9E00ACFB41 /* Moya */,
+				71653F5F2CF196FB006BB1EF /* SnapKit */,
 			);
 			productName = "SOPKATHON-4Team-iOS";
 			productReference = 713A30A42CEF42C600ACFB41 /* SOPKATHON-4Team-iOS.app */;
@@ -126,10 +123,10 @@
 			mainGroup = 713A309B2CEF42C600ACFB41;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				713A31A22CEF4EAF00ACFB41 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				713A31A72CEF4EBA00ACFB41 /* XCRemoteSwiftPackageReference "Then" */,
 				713A31AA2CEF4F5F00ACFB41 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				713A31AD2CEF4F9E00ACFB41 /* XCRemoteSwiftPackageReference "Moya" */,
+				71653F5E2CF196FB006BB1EF /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 713A30A52CEF42C600ACFB41 /* Products */;
@@ -369,14 +366,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		713A31A22CEF4EAF00ACFB41 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.7.1;
-			};
-		};
 		713A31A72CEF4EBA00ACFB41 /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
@@ -401,19 +390,17 @@
 				minimumVersion = 15.0.3;
 			};
 		};
+		71653F5E2CF196FB006BB1EF /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		713A31A32CEF4EAF00ACFB41 /* SnapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 713A31A22CEF4EAF00ACFB41 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = SnapKit;
-		};
-		713A31A52CEF4EAF00ACFB41 /* SnapKit-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 713A31A22CEF4EAF00ACFB41 /* XCRemoteSwiftPackageReference "SnapKit" */;
-			productName = "SnapKit-Dynamic";
-		};
 		713A31A82CEF4EBA00ACFB41 /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 713A31A72CEF4EBA00ACFB41 /* XCRemoteSwiftPackageReference "Then" */;
@@ -428,6 +415,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 713A31AD2CEF4F9E00ACFB41 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		71653F5F2CF196FB006BB1EF /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71653F5E2CF196FB006BB1EF /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
