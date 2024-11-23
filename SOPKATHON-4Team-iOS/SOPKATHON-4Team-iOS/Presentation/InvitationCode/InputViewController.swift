@@ -20,7 +20,7 @@ class InputViewController: UIViewController {
     }
     
     private func setStyle() {
-        self.view.backgroundColor = UIColor.systemBackground
+        self.view.backgroundColor = UIColor(red: 0.964, green: 0.97, blue: 0.984, alpha: 1)
     }
     
     private func setUI() {
