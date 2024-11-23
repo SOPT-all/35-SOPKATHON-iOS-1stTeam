@@ -10,14 +10,14 @@ import UIKit
 import SnapKit
 import Then
 
-class GradeHeaderView : UIView {
+class GradeHeaderView: UIView {
     
-    let titleLabel : UILabel = UILabel()
+    let titleLabel: UILabel = UILabel()
     
     let logoImageView: UIImageView = UIImageView()
-
+    
     var nickname: String = "수민"
-
+    
     init() {
         super.init(frame: .zero)
         
@@ -29,7 +29,7 @@ class GradeHeaderView : UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func setHierarchy() {
         self.addSubviews(titleLabel,
                          logoImageView)
@@ -63,7 +63,7 @@ class GradeHeaderView : UIView {
         logoImageView.do {
             $0.clipsToBounds = true
             $0.contentMode = .scaleAspectFill
-            $0.image = UIImage(resource: .gradeHeaderLogo)
+            $0.image = .gradeResult
         }
         
     }
