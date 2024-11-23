@@ -12,7 +12,11 @@ import Then
 
 class MainViewController: UIViewController {
     
-    let invitationCardView = InvitationCardView()
+    // MARK: - UI Component
+    
+    private let invitationCardView = InvitationCardView()
+    
+    // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +25,8 @@ class MainViewController: UIViewController {
         setUI()
         setLayout()
     }
+    
+    // MARK: - UI&Layout
     
     private func setStyle() {
         view.backgroundColor = .white

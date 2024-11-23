@@ -69,6 +69,8 @@ class InvitationCardView: UIView {
         }
     }
     
+    // MARK: - CollectionView
+    
     private func setUpCollectionView() {
         
         invitationCardCollectionView.do {
@@ -93,6 +95,8 @@ class InvitationCardView: UIView {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension InvitationCardView: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y != 0 {
@@ -100,6 +104,8 @@ extension InvitationCardView: UICollectionViewDelegate {
         }
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension InvitationCardView: UICollectionViewDataSource {
     
