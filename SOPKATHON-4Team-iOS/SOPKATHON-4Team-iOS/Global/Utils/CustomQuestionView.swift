@@ -12,17 +12,15 @@ import Then
 
 class CustomQuestionView: UIView {
     
-    private let questionView: UIView = UIView()
-    
     var questionTextView: UITextView = UITextView()
     
     var questionTextLabel: UILabel = UILabel()
     
     var textCountLabel: UILabel = UILabel()
     
-    lazy var trueButton: CustomButton = CustomButton(title: "true")
+    lazy var trueButton: CustomButton = CustomButton(title: "True", font: .bodyB16, cornerRadius: 16)
     
-    lazy var falseButton: CustomButton = CustomButton(title: "true")
+    lazy var falseButton: CustomButton = CustomButton(title: "False", font: .bodyB16, cornerRadius: 16)
     
     private var questionType: QuestionType
     
@@ -41,47 +39,54 @@ class CustomQuestionView: UIView {
     }
     
     func setHierarchy() {
-        self.addSubviews(questionView,
+        self.addSubviews(questionTextView,
+                         questionTextLabel,
+                         textCountLabel,
                          trueButton,
                          falseButton)
-        questionView.addSubviews(questionTextView,
-                                 questionTextLabel,
-                                 textCountLabel)
         
     }
     
     func setLayout() {
-        questionView.snp.makeConstraints {
-            $0.top.horizontalEdges.equalToSuperview()
-            $0.height.equalToSuperview().multipliedBy(0.7)
-        }
-        
         questionTextView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalToSuperview().offset(10)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(63)
         }
         
         questionTextLabel.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalToSuperview().offset(10)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(63)
         }
         
         textCountLabel.snp.makeConstraints {
-            $0.trailing.bottom.equalToSuperview()
-            $0.width.equalTo(50)
+            $0.top.equalToSuperview().offset(78)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(20)
         }
         
         trueButton.snp.makeConstraints {
-            $0.bottom.leading.equalToSuperview()
-            $0.width.equalToSuperview().multipliedBy(0.5)
+            $0.leading.equalToSuperview().offset(4.5)
+            $0.bottom.equalToSuperview().inset(5)
+            $0.width.equalTo(164)
+            $0.height.equalTo(42)
         }
         
         falseButton.snp.makeConstraints {
-            $0.bottom.trailing.equalToSuperview()
-            $0.width.equalToSuperview().multipliedBy(0.5)
+            $0.trailing.equalToSuperview().inset(4.5)
+            $0.bottom.equalToSuperview().inset(5)
+            $0.width.equalTo(164)
+            $0.height.equalTo(42)
         }
         
     }
     
     func setStyle() {
+        self.layer.cornerRadius = 20
+        self.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.backgroundColor = .white
+        
         switch questionType {
         case .ask:
             questionTextLabel.isHidden = true
@@ -100,12 +105,35 @@ class CustomQuestionView: UIView {
         
         trueButton
             .setEnabled(false)
-            .setButtonStatus(normalColor: .red, normalTextColor: .white, disableColor: .gray, disableTextColor: .black)
+            .setButtonStatus(normalColor: UIColor(resource: .orange), normalTextColor: .white, disableColor: UIColor(resource: .gray300), disableTextColor: UIColor(resource: .gray800))
+            .layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+        trueButton.addTarget(self, action: #selector(trueButtonTapped), for: .touchUpInside)
         
         falseButton
             .setEnabled(false)
-            .setButtonStatus(normalColor: .red, normalTextColor: .white, disableColor: .gray, disableTextColor: .black)
+            .setButtonStatus(normalColor: UIColor(resource: .orange), normalTextColor: .white, disableColor: UIColor(resource: .gray300), disableTextColor: UIColor(resource: .gray800))
+            .layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
+        falseButton.addTarget(self, action: #selector(falseButtonTapped), for: .touchUpInside)
+        
+    }
+    
+}
+
+extension CustomQuestionView {
+    
+    @objc
+    func trueButtonTapped() {
+        print("jdsfjsldkjflakdjf")
+        trueButton.setEnabled(true)
+        falseButton.setEnabled(false)
+    }
+    
+    @objc
+    func falseButtonTapped() {
+        falseButton.setEnabled(true)
+        trueButton.setEnabled(false)
     }
     
 }
@@ -119,6 +147,11 @@ extension CustomQuestionView {
         default:
             questionTextLabel.text = text
         }
+    }
+    
+    func buttonSelected() -> Bool {
+        let trueValue = trueButton.isEnabled ? true : false
+        return trueValue
     }
     
 }
