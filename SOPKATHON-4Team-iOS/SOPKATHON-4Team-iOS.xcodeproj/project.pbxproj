@@ -13,7 +13,18 @@
 		71653F602CF196FB006BB1EF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71653F5F2CF196FB006BB1EF /* SnapKit */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		710D4B942CF25E18006F6B39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 713A309C2CEF42C600ACFB41 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 713A30A32CEF42C600ACFB41;
+			remoteInfo = "SOPKATHON-4Team-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		710D4B902CF25E18006F6B39 /* SOPKATHON-4Team-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SOPKATHON-4Team-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		713A30A42CEF42C600ACFB41 /* SOPKATHON-4Team-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SOPKATHON-4Team-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -28,6 +39,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		710D4B912CF25E18006F6B39 /* SOPKATHON-4Team-iOSTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "SOPKATHON-4Team-iOSTests";
+			sourceTree = "<group>";
+		};
 		713A30A62CEF42C600ACFB41 /* SOPKATHON-4Team-iOS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -39,6 +55,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		710D4B8D2CF25E18006F6B39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		713A30A12CEF42C600ACFB41 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				713A30A62CEF42C600ACFB41 /* SOPKATHON-4Team-iOS */,
+				710D4B912CF25E18006F6B39 /* SOPKATHON-4Team-iOSTests */,
 				713A30A52CEF42C600ACFB41 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				713A30A42CEF42C600ACFB41 /* SOPKATHON-4Team-iOS.app */,
+				710D4B902CF25E18006F6B39 /* SOPKATHON-4Team-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -72,6 +97,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		710D4B8F2CF25E18006F6B39 /* SOPKATHON-4Team-iOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 710D4B962CF25E18006F6B39 /* Build configuration list for PBXNativeTarget "SOPKATHON-4Team-iOSTests" */;
+			buildPhases = (
+				710D4B8C2CF25E18006F6B39 /* Sources */,
+				710D4B8D2CF25E18006F6B39 /* Frameworks */,
+				710D4B8E2CF25E18006F6B39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				710D4B952CF25E18006F6B39 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				710D4B912CF25E18006F6B39 /* SOPKATHON-4Team-iOSTests */,
+			);
+			name = "SOPKATHON-4Team-iOSTests";
+			packageProductDependencies = (
+			);
+			productName = "SOPKATHON-4Team-iOSTests";
+			productReference = 710D4B902CF25E18006F6B39 /* SOPKATHON-4Team-iOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		713A30A32CEF42C600ACFB41 /* SOPKATHON-4Team-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 713A30B72CEF42C800ACFB41 /* Build configuration list for PBXNativeTarget "SOPKATHON-4Team-iOS" */;
@@ -108,6 +156,10 @@
 				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
+					710D4B8F2CF25E18006F6B39 = {
+						CreatedOnToolsVersion = 16.1;
+						TestTargetID = 713A30A32CEF42C600ACFB41;
+					};
 					713A30A32CEF42C600ACFB41 = {
 						CreatedOnToolsVersion = 16.1;
 					};
@@ -134,11 +186,19 @@
 			projectRoot = "";
 			targets = (
 				713A30A32CEF42C600ACFB41 /* SOPKATHON-4Team-iOS */,
+				710D4B8F2CF25E18006F6B39 /* SOPKATHON-4Team-iOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		710D4B8E2CF25E18006F6B39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		713A30A22CEF42C600ACFB41 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,6 +209,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		710D4B8C2CF25E18006F6B39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		713A30A02CEF42C600ACFB41 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,7 +225,61 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		710D4B952CF25E18006F6B39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 713A30A32CEF42C600ACFB41 /* SOPKATHON-4Team-iOS */;
+			targetProxy = 710D4B942CF25E18006F6B39 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		710D4B972CF25E18006F6B39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8Q4H7X3Q58;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "th1ngjin.SOPKATHON-4Team-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SOPKATHON-4Team-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SOPKATHON-4Team-iOS";
+				XROS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Debug;
+		};
+		710D4B982CF25E18006F6B39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8Q4H7X3Q58;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				MACOSX_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "th1ngjin.SOPKATHON-4Team-iOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SOPKATHON-4Team-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SOPKATHON-4Team-iOS";
+				XROS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Release;
+		};
 		713A30B82CEF42C800ACFB41 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -345,6 +466,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		710D4B962CF25E18006F6B39 /* Build configuration list for PBXNativeTarget "SOPKATHON-4Team-iOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				710D4B972CF25E18006F6B39 /* Debug */,
+				710D4B982CF25E18006F6B39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		713A309F2CEF42C600ACFB41 /* Build configuration list for PBXProject "SOPKATHON-4Team-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

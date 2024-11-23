@@ -10,17 +10,7 @@ import Foundation
 import Moya
 
 struct Providers {
-    static let calendarProvider = MoyaProvider<QuestionTargetType>(withAuth: true)
-    static let authProvider = MoyaProvider<AuthTargetType>(withAuth: true)
-}
-
-extension MoyaProvider {
-    convenience init(withAuth: Bool) {
-        if withAuth {
-            self.init(session: Session(interceptor: AuthInterceptor.shared),
-                      plugins: [NetworkLoggerPlugin(verbose: true)])
-        } else {
-            self.init(plugins: [NetworkLoggerPlugin(verbose: true)])
-        }
-    }
+    // 필요에 따라 AuthInterceptor 없이 MoyaProvider를 생성
+    static let questionProvider = MoyaProvider<QuestionTargetType>(plugins: [NetworkLoggerPlugin(verbose: true)])
+    static let authProvider = MoyaProvider<AuthTargetType>(plugins: [NetworkLoggerPlugin(verbose: true)])
 }
