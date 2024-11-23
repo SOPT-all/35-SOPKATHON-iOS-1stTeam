@@ -31,6 +31,8 @@ class InvitationButtonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - UI&Layout
+    
     private func setStyle() {
         titleLabel.do {
             $0.font = .bodyB16
@@ -54,6 +56,8 @@ class InvitationButtonView: UIView {
         }
     }
 }
+
+// MARK: - configure
 
 extension InvitationButtonView {
     func configure(with state: InvitationState) {
@@ -80,6 +84,8 @@ extension InvitationButtonView {
     }
 }
 
+// MARK: - setLineSpacing
+
 extension UILabel {
     func setLineSpacing(spacing: CGFloat) {
         guard let text = text else { return }
@@ -87,9 +93,11 @@ extension UILabel {
         let attributeString = NSMutableAttributedString(string: text)
         let style = NSMutableParagraphStyle()
         style.lineSpacing = spacing
-        attributeString.addAttribute(.paragraphStyle,
-                                     value: style,
-                                     range: NSRange(location: 0, length: attributeString.length))
+        attributeString.addAttribute(
+            .paragraphStyle,
+            value: style,
+            range: NSRange(location: 0, length: attributeString.length)
+        )
         attributedText = attributeString
     }
 }
