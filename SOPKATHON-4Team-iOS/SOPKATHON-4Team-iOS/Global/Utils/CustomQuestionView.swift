@@ -10,6 +10,9 @@ import UIKit
 import SnapKit
 import Then
 
+import RxCocoa
+import RxSwift
+
 class CustomQuestionView: UIView {
     
     private let answerData = Answer.mockData
@@ -23,6 +26,10 @@ class CustomQuestionView: UIView {
     lazy var trueButton: UIButton = UIButton()
     
     lazy var falseButton: UIButton = UIButton()
+    
+    let questionText: PublishRelay<String> = PublishRelay<String>()
+    
+    var disposeBag = DisposeBag()
     
     private var isCorrectImageView = UIImageView()
     
@@ -160,12 +167,12 @@ class CustomQuestionView: UIView {
             $0.layer.cornerRadius = 16
             $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         }
-                                      
+        
         trueButton.do {
             $0.setTitle("True", for: .normal)
             $0.addTarget(self, action: #selector(trueButtonTapped), for: .touchUpInside)
         }
-
+        
         falseButton.do {
             $0.setTitle("False", for: .normal)
             $0.addTarget(self, action: #selector(falseButtonTapped), for: .touchUpInside)
@@ -173,6 +180,22 @@ class CustomQuestionView: UIView {
         
     }
     
+}
+
+extension CustomQuestionView {
+    private func bindTextView() {
+        // UITextView의 텍스트 변경 이벤트를 방출
+        questionTextView.rx.text.orEmpty
+            .distinctUntilChanged() // 중복 값 제거
+            .bind(to: questionText) // PublishRelay에 바인딩
+            .disposed(by: disposeBag)
+        
+        // 텍스트 변경 시 글자 수 업데이트
+        questionTextView.rx.text.orEmpty
+            .map { "(\($0.count)/100)" }
+            .bind(to: textCountLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
 }
 
 extension CustomQuestionView {
@@ -212,15 +235,18 @@ extension CustomQuestionView {
 extension CustomQuestionView : UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-            let currentText = textView.text ?? ""
-            guard let stringRange = Range(range, in: currentText) else {
-                return false
-            }
-            let changedText = currentText.replacingCharacters(in: stringRange, with: text)
-            textCountLabel.text = "(\(changedText.count)/100)"
-           
-            let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
-            return updatedText.count <= 100
-       }
-
+        let currentText = textView.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else {
+            return false
+        }
+        let changedText = currentText.replacingCharacters(in: stringRange, with: text)
+        textCountLabel.text = "(\(changedText.count)/100)"
+        
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+        return updatedText.count <= 100
+    }
+    
+    
+    
 }
+

@@ -67,7 +67,7 @@ class SplashViewController : UIViewController {
     }
     
     private func pushHomeViewController() {
-        let mainViewController = MainViewController()
+        let mainViewController = UINavigationController(rootViewController: MainViewController())
         guard let window = self.view.window else { return }
         ViewControllerUtils.setRootViewController(window: window, viewController: mainViewController, withAnimation: true)
         

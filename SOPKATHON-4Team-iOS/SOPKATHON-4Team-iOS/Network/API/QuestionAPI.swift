@@ -18,5 +18,5 @@ struct Question: Codable {
 }
 
 struct inviteCodeAPI: Codable {
-    let inviteCode: Int
+    let invitationCode: Int
 }

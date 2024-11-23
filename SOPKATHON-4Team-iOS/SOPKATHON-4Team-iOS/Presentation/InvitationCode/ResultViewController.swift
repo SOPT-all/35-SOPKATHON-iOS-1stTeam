@@ -9,7 +9,18 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
+    private let invitationCode: Int
+    
     private let result = ResultView()
+    
+    init(invitationCode: Int) {
+        self.invitationCode = invitationCode
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +28,10 @@ class ResultViewController: UIViewController {
         setStyle()
         setUI()
         setLayout()
+        
+        result.codeValueLabel.text = "\(invitationCode)"
+        
+        self.result.goToHomeButton.addTarget(self, action: #selector(goToHome), for: .touchUpInside)
     }
     
     private func setStyle() {
@@ -31,5 +46,13 @@ class ResultViewController: UIViewController {
         result.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }
+    }
+    
+    @objc
+    private func goToHome() {
+        let onboardingViewController = MainViewController()
+        guard let window = self.view.window else { return }
+        
+        ViewControllerUtils.setRootViewController(window: window, viewController: onboardingViewController, withAnimation: true)
     }
 }
