@@ -174,7 +174,7 @@ extension CustomButton {
             case .normal:
                 updatedConfiguration?.background.backgroundColor = .black
             case .highlighted:
-                updatedConfiguration?.background.backgroundColor = .blue
+                updatedConfiguration?.background.backgroundColor = .clear
             default:
                 updatedConfiguration?.background.backgroundColor = .brown
             }
