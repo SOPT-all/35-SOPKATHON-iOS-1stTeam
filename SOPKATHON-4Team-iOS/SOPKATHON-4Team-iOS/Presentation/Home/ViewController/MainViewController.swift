@@ -14,7 +14,6 @@ class MainViewController: UIViewController {
     
     // MARK: - UI Component
     
-    let name = "유빈"
     private let invitationCardView = InvitationCardView()
     private let invitationMakeButtonView = InvitationButtonView()
     private let invitationReceiveButtonView = InvitationButtonView()
@@ -55,8 +54,10 @@ class MainViewController: UIViewController {
             $0.contentMode = .scaleAspectFit
         }
         
+        let name = UserManager.shared.nickName ?? "사용자"
+        
         topTitleLabel.do {
-            $0.text = "\(name)님의 만남을\n더 맛있게 만들어드릴게요"
+            $0.text = "\(String(describing: name))님의 만남을\n더 맛있게 만들어드릴게요"
             $0.font = .bodyB20
             $0.numberOfLines = 0
             $0.setLineSpacing(spacing: 5.0)
