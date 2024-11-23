@@ -42,6 +42,10 @@ class MainViewController: UIViewController {
             $0.configure(with: .receive)
             $0.layer.cornerRadius = 20
         }
+        
+        invitationCardView.do {
+            $0.layer.cornerRadius = 20
+        }
     }
     
     private func setUI() {
@@ -58,13 +62,15 @@ class MainViewController: UIViewController {
         
         invitationReceiveButtonView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(100)
-            $0.trailing.equalToSuperview().(17)
+            $0.trailing.equalToSuperview().offset(-17)
+            $0.width.equalTo((UIScreen.main.bounds.width - 47) / 2)
+            $0.height.equalTo(198)
         }
         
         invitationCardView.snp.makeConstraints {
+            $0.horizontalEdges.equalToSuperview().inset(17)
+            $0.top.equalTo(invitationMakeButtonView.snp.bottom).offset(14)
             $0.height.equalTo(228)
-            $0.horizontalEdges.equalToSuperview()
-            $0.top.equalToSuperview().offset(150)
         }
         
     }
