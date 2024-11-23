@@ -38,11 +38,11 @@ class InvitationCardCollectionViewCell: UICollectionViewCell {
 
     private func configureBackgroundImage(for theme: Int) {
         switch theme {
-        case 1:
+        case 0:
             backgroundImageView.image = .cardImage1
-        case 2:
+        case 1:
             backgroundImageView.image = .cardImage2
-        case 3:
+        case 2:
             backgroundImageView.image = .cardImage3
         default:
             backgroundImageView.image = .topLogo

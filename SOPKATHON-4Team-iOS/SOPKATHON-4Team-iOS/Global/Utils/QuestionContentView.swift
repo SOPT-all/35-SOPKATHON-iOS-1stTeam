@@ -78,4 +78,9 @@ class QuestionContentView : UIView {
         }
     }
     
+    func getData() {
+        let subview = questionStackView.arrangedSubviews[index]
+        
+    }
+    
 }

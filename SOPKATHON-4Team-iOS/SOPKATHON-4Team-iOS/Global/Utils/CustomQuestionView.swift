@@ -12,6 +12,8 @@ import Then
 
 class CustomQuestionView: UIView {
     
+    private let answerData = Answer.mockData
+    
     var questionTextView: UITextView = UITextView()
     
     let questionTextLabel: UILabel = UILabel()

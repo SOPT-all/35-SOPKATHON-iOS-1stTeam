@@ -16,7 +16,7 @@ class GradeHeaderView: UIView {
     
     let logoImageView: UIImageView = UIImageView()
     
-    var nickname: String = "수민"
+    var nickname: String = "지우"
     
     init() {
         super.init(frame: .zero)

@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Then
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UIGestureRecognizerDelegate {
     
     // MARK: - UI Component
     
@@ -28,6 +28,14 @@ class MainViewController: UIViewController {
         setStyle()
         setUI()
         setLayout()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapInvitationReceiveButton))
+            invitationReceiveButtonView.addGestureRecognizer(tapGesture)
+            invitationReceiveButtonView.isUserInteractionEnabled = true
+        
+        let cardTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapInvitationCard))
+            invitationCardView.addGestureRecognizer(cardTapGesture)
+            invitationCardView.isUserInteractionEnabled = true
     }
     
     // MARK: - UI&Layout
@@ -101,5 +109,17 @@ class MainViewController: UIViewController {
             $0.height.equalTo(228)
         }
         
+    }
+    
+    @objc private func didTapInvitationReceiveButton() {
+        let inputViewController = InputViewController()
+        inputViewController.modalPresentationStyle = .fullScreen
+        present(inputViewController, animated: true, completion: nil)
+    }
+    
+    @objc private func didTapInvitationCard() {
+        let inputViewController = GradeViewController()
+        inputViewController.modalPresentationStyle = .fullScreen
+        present(inputViewController, animated: true, completion: nil)
     }
 }

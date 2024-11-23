@@ -25,6 +25,13 @@ class GradeViewController: UIViewController {
         gradeContentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        gradeContentView.footerButton.do {
+            $0.addTarget(self, action: #selector(footerButtonTapped), for: .touchUpInside)
+        }
+    }
+    
+    @objc func footerButtonTapped() {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
