@@ -6,12 +6,11 @@
 //
 
 import Foundation
-
 import Moya
 
 enum QuestionTargetType {
     case getQuestionnaire
-    case getQuestionnaires
+    case getQuestionnaires(invitationCode: Int)
     case postQuestionnaire(theme: Int, questions: [Question])
     case solveQuestionnaire(answerList: [Int])
 }
@@ -31,7 +30,7 @@ extension QuestionTargetType: TargetType {
         case .getQuestionnaire, .postQuestionnaire:
             return "/questionnaire"
         case .getQuestionnaires:
-            return "/questionnaire/test"
+            return "/api/v1/questionnaire"
         case .solveQuestionnaire:
             return "/me/questionnaires"
         }
@@ -48,8 +47,14 @@ extension QuestionTargetType: TargetType {
     
     var task: Moya.Task {
         switch self {
-        case .getQuestionnaire, .getQuestionnaires:
+        case .getQuestionnaire:
             return .requestPlain
+            
+        case .getQuestionnaires(let invitationCode):
+            return .requestParameters(
+                parameters: ["invitationCode": invitationCode],
+                encoding: URLEncoding.default
+            )
             
         case .postQuestionnaire(let theme, let questions):
             return .requestParameters(
@@ -78,4 +83,3 @@ extension QuestionTargetType: TargetType {
         return .successCodes
     }
 }
-
