@@ -57,7 +57,7 @@ class InvitationCardView: UIView {
     
     private func setLayout() {
         titleLabel.snp.makeConstraints {
-            $0.top.equalToSuperview()
+            $0.top.equalToSuperview().offset(22)
             $0.centerX.equalToSuperview()
         }
         
