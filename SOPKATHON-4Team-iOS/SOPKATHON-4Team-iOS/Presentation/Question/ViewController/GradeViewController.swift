@@ -12,7 +12,7 @@ import Then
 
 class GradeViewController: UIViewController {
     
-    lazy var askContentView: QuestionContentView = {
+    lazy var gradeContentView: QuestionContentView = {
         return QuestionContentView(questionType: .grade)
     }()
     
@@ -21,8 +21,8 @@ class GradeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(askContentView)
-        askContentView.snp.makeConstraints {
+        self.view.addSubview(gradeContentView)
+        gradeContentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }

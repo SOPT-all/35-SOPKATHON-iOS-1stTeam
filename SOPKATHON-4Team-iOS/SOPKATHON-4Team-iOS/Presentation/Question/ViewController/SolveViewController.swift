@@ -12,7 +12,7 @@ import Then
 
 class SolveViewController: UIViewController {
     
-    lazy var askContentView: QuestionContentView = {
+    lazy var solveContentView: QuestionContentView = {
         return QuestionContentView(questionType: .solve)
     }()
     
@@ -21,8 +21,8 @@ class SolveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(askContentView)
-        askContentView.snp.makeConstraints {
+        self.view.addSubview(solveContentView)
+        solveContentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
