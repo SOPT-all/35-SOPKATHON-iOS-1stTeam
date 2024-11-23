@@ -7,9 +7,15 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
+
+import Moya
+
 class InputViewController: UIViewController {
     
     private let input = InputView()
+    private let inviteText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +23,9 @@ class InputViewController: UIViewController {
         setStyle()
         setUI()
         setLayout()
+        
+        input.goToInvitationButton.addTarget(self, action: #selector(goToInvitationButtonAction), for: .touchUpInside)
+        
     }
     
     private func setStyle() {
@@ -31,5 +40,15 @@ class InputViewController: UIViewController {
         input.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }
+    }
+    
+    
+    @objc
+    private func goToInvitationButtonAction() {
+        
+        let solveVC = SolveViewController()
+        guard let window = self.view.window else { return }
+        
+        ViewControllerUtils.setRootViewController(window: window, viewController: solveVC, withAnimation: true)
     }
 }

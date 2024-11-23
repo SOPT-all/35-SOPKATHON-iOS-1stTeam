@@ -19,7 +19,7 @@ class InputView: UIView {
         return label
     }()
     
-    private let codeTextField: UITextField = {
+    let codeTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = ""
         textField.clearButtonMode = .whileEditing
@@ -42,7 +42,7 @@ class InputView: UIView {
         return button
     }()
     
-    private let goToInvitationButton = CustomButton(
+    let goToInvitationButton = CustomButton(
         title: "초대장 열어보기",
         font: UIFont.bodyB18,
         cornerRadius: 8
