@@ -14,9 +14,10 @@ class SplashViewController : UIViewController {
     
     let splashImageView = UIImageView()
     let splashNameImageView = UIImageView()
+    let EffectImageView = UIImageView()
     
     override func viewDidLoad() {
-        view.addSubviews(splashImageView, splashNameImageView)
+        view.addSubviews(splashImageView, splashNameImageView, EffectImageView)
         
         splashImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(243)
@@ -29,6 +30,11 @@ class SplashViewController : UIViewController {
             $0.top.equalTo(splashImageView.snp.bottom)
             $0.centerX.equalToSuperview()
             $0.width.height.equalTo(143)
+        }
+        
+        EffectImageView.snp.makeConstraints{
+            $0.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
         
         view.backgroundColor = UIColor(resource: .background)
@@ -44,10 +50,16 @@ class SplashViewController : UIViewController {
             $0.contentMode = .scaleAspectFill
         }
         
-        //        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
-        //            let onboardingVC = OnboardingViewController()
-        //            self?.navigationController?.pushViewController(onboardingVC, animated: false)
-        //        }
+        EffectImageView.do{
+            $0.image = UIImage(resource: .backgroundEffect)
+            $0.clipsToBounds = true
+            $0.contentMode = .scaleAspectFill
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+            let onboardingVC = OnboardingViewController()
+            self?.navigationController?.pushViewController(onboardingVC, animated: false)
+        }
     }
     
 }
