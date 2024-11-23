@@ -8,5 +8,5 @@
 import Foundation
 
 struct AuthAPI: Codable {
-    let id: Int
+    let memberId: Int
 }
