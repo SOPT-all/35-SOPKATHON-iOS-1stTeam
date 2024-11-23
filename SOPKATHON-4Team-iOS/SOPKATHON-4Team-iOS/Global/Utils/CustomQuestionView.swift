@@ -14,7 +14,7 @@ class CustomQuestionView: UIView {
     
     var questionTextView: UITextView = UITextView()
     
-    var questionTextLabel: UILabel = UILabel()
+    let questionTextLabel: UILabel = UILabel()
     
     var textCountLabel: UILabel = UILabel()
     
@@ -32,6 +32,8 @@ class CustomQuestionView: UIView {
         setHierarchy()
         setLayout()
         setStyle()
+        
+        questionTextView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -92,6 +94,7 @@ class CustomQuestionView: UIView {
             questionTextLabel.isHidden = true
         default:
             questionTextView.isHidden = true
+            textCountLabel.isHidden = true
         }
         
         questionTextView.do {
@@ -101,6 +104,13 @@ class CustomQuestionView: UIView {
         
         questionTextLabel.do {
             $0.numberOfLines = 0
+        }
+        
+        textCountLabel.do {
+            $0.text = "(0/100)"
+            $0.font = .bodyR12
+            $0.textColor = .gray600
+            $0.textAlignment = .right
         }
         
         [trueButton, falseButton].forEach {
@@ -160,4 +170,18 @@ extension CustomQuestionView {
         return trueValue
     }
     
+}
+
+extension CustomQuestionView : UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+           let currentText = textView.text ?? ""
+           guard let stringRange = Range(range, in: currentText) else {
+               return false
+           }
+           
+           let updatedText = currentText.replacingCharacters(in: stringRange, with: text)
+           return updatedText.count <= 100 // 100자 이하일 때만 입력 허용
+       }
+
 }
