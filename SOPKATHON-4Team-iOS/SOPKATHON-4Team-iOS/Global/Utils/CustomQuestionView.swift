@@ -47,6 +47,7 @@ class CustomQuestionView: UIView {
     func setHierarchy() {
         self.addSubviews(questionTextView,
                          questionTextLabel,
+                         isCorrectImageView,
                          textCountLabel,
                          trueButton,
                          falseButton)
