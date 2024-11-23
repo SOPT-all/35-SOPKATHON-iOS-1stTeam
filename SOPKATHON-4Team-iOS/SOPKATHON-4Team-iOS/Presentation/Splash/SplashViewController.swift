@@ -57,9 +57,27 @@ class SplashViewController : UIViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
-            let onboardingVC = OnboardingViewController()
-            self?.navigationController?.pushViewController(onboardingVC, animated: false)
+            if UserManager.shared.hasUserId {
+                self?.pushHomeViewController()
+            } else {
+                self?.pushOnboardingViewController()
+            }
         }
+        
+    }
+    
+    private func pushHomeViewController() {
+        let mainViewController = MainViewController()
+        guard let window = self.view.window else { return }
+        ViewControllerUtils.setRootViewController(window: window, viewController: mainViewController, withAnimation: true)
+        
+    }
+    
+    private func pushOnboardingViewController() {
+        let onboardingViewController = OnboardingViewController()
+        guard let window = self.view.window else { return }
+        
+        ViewControllerUtils.setRootViewController(window: window, viewController: onboardingViewController, withAnimation: true)
     }
     
 }

@@ -22,10 +22,11 @@ extension AuthTargetType: TargetType {
         return url
     }
     
+    
     var path: String {
         switch self {
         case .signIn:
-            return "register"
+            return "/register"
         }
     }
     
@@ -40,12 +41,12 @@ extension AuthTargetType: TargetType {
         switch self {
         case .signIn(let nickName):
             return .requestParameters(
-                parameters: ["nickName": nickName],
+                parameters: ["nickname": nickName],
                 encoding: JSONEncoding.default
             )
         }
     }
-        
+    
     var headers: [String: String]? {
         return Config.defaultHeader
     }
