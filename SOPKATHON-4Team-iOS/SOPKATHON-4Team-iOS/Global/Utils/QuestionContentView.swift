@@ -15,6 +15,8 @@ import RxCocoa
 
 class QuestionContentView: UIView {
     
+    private let answerData = Answer.mockData
+    
     let headerView: UIView
     let questionStackView: UIStackView = UIStackView()
     let footerButton: UIButton = UIButton()
@@ -74,9 +76,24 @@ class QuestionContentView: UIView {
         self.backgroundColor = .background
         
         questionStackView.do {
-            for _ in 1...3 {
-                let questionView = CustomQuestionView(questionType: questionType)
-                $0.addArrangedSubview(questionView)
+            // answerData의 첫 번째 Answer 객체의 solvedQuestions 가져오기
+            if let firstAnswer = answerData.first {
+                for solvedQuestion in firstAnswer.solvedQuestions {
+                    let questionView = CustomQuestionView(questionType: questionType)
+                    
+                    // SolvedQuestion 데이터로 CustomQuestionView 설정
+                    questionView.setQuestionText(text: solvedQuestion.subject)
+                    questionView.isCorrect = solvedQuestion.isCorrect
+                    
+                    // True/False 버튼 상태 설정
+                    if solvedQuestion.answer {
+                        questionView.trueButtonTapped()
+                    } else {
+                        questionView.falseButtonTapped()
+                    }
+                    
+                    $0.addArrangedSubview(questionView)
+                }
             }
             $0.setStackView(spacing: 13)
         }
@@ -86,12 +103,14 @@ class QuestionContentView: UIView {
         }
     }
     
+
     private func setBind() {
         footerButton.rx.tap.subscribe { [weak self] _ in
             self?.prepareAndSendData()
         }.disposed(by: disposeBag)
     }
     
+
 }
 extension CustomQuestionView {
     func getQuestionData() -> Question? {

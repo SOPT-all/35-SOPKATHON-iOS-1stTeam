@@ -61,8 +61,7 @@ class CustomQuestionView: UIView {
                          trueButton,
                          falseButton)
         
-    }
-    
+    } 
     func setLayout() {
         questionTextView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
@@ -81,6 +80,7 @@ class CustomQuestionView: UIView {
             questionTextLabel.snp.makeConstraints {
                 $0.top.equalToSuperview().offset(10)
                 $0.leading.equalTo(isCorrectImageView.snp.trailing).offset(5)
+                $0.trailing.equalToSuperview().offset(20)
                 $0.height.equalTo(63)
             }
         case .solve:
