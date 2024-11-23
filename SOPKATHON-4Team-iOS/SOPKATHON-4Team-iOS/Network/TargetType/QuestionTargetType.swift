@@ -6,42 +6,8 @@
 //
 
 import Foundation
+
 import Moya
-
-
-struct Questionnaires: Codable {
-    let theme: Int
-    let questions: [Question]
-}
-
-struct Question: Codable {
-    let subject: String
-    let answer: Bool
-}
-
-struct inviteCodeAPI: Codable {
-    let inviteCode: Int
-}
-
-// 유저가 푼 리스트
-
-struct AnswerListResponse: Codable {
-    let answerList: [Answer]
-}
-
-struct Answer: Codable {
-    let theme: Int
-    let questionnaireOwner: String
-    let questions: [QuestionCollection]
-}
-
-// Question structure
-struct QuestionCollection: Codable {
-    let question: String
-    let answer: Bool
-    let isCorrect: Bool
-}
-
 
 enum QuestionTargetType {
     case getQuestionnaire
