@@ -43,7 +43,7 @@ final class UserManager {
                             return
                         }
                         
-                        self.userId = data.id
+                        self.userId = data.memberId
                         
                         completion(.success(true))
                     } catch {
