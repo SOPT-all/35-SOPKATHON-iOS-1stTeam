@@ -29,6 +29,11 @@ class SplashViewController : UIViewController {
             $0.clipsToBounds = true
             $0.contentMode = .scaleAspectFill
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { [weak self] in
+            let onboardingVC = OnboardingViewController()
+            self?.navigationController?.pushViewController(onboardingVC, animated: false)
+        }
     }
     
 }

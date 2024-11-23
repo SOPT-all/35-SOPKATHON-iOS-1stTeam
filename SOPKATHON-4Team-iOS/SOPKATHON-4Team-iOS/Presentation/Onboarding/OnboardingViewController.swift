@@ -51,6 +51,7 @@ class OnboardingViewController : UIViewController {
     
     func setStyle() {
         view.backgroundColor = UIColor(resource: .background)
+        navigationItem.hidesBackButton = true
         
         nicknameLabel = LabelFactory.build(text: "닉네임을 입력하세요",
                                            font: .titleB24,
