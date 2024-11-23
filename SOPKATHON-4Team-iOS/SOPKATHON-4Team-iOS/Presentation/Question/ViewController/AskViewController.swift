@@ -21,10 +21,21 @@ class AskViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true
+        
         self.view.addSubview(askContentView)
         askContentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
     }
     
+}
+
+extension UIStackView {
+    func getAllQuestions() -> [Question] {
+        return arrangedSubviews
+            .compactMap { $0 as? CustomQuestionView }
+            .compactMap { $0.getQuestionData() } // 각 뷰에서 데이터 추출
+    }
 }

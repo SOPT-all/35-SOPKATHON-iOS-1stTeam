@@ -20,7 +20,7 @@ class AskHeaderView : UIView {
 
     var nickname: String = "수민"
     
-    private var selectedBackgroundIndex : Int = 0 { // 이 값을 백그라운드 값으로 서버에 넘겨줘야
+    var selectedBackgroundIndex : Int = 0 { // 이 값을 백그라운드 값으로 서버에 넘겨줘야
         didSet {
             updateBackgroundButton()
         }

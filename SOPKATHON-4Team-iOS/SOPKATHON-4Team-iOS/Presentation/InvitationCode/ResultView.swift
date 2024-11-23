@@ -29,7 +29,7 @@ class ResultView: UIView {
         return label
     }()
     
-    private let codeValueLabel: UILabel = {
+    let codeValueLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.bodyB20
         label.textColor = .black
@@ -54,7 +54,7 @@ class ResultView: UIView {
         return button
     }()
     
-    private let goToHomeButton = CustomButton(
+    let goToHomeButton = CustomButton(
         title: "홈으로 돌아가기",
         font: UIFont.bodyB18,
         cornerRadius: 8

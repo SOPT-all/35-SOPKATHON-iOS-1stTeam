@@ -11,6 +11,7 @@
 		713A31AC2CEF4F5F00ACFB41 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 713A31AB2CEF4F5F00ACFB41 /* Kingfisher */; };
 		713A31AF2CEF4F9E00ACFB41 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 713A31AE2CEF4F9E00ACFB41 /* Moya */; };
 		71653F602CF196FB006BB1EF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 71653F5F2CF196FB006BB1EF /* SnapKit */; };
+		71AD67572CF280F100869399 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 71AD67562CF280F100869399 /* RxCocoa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 			files = (
 				713A31AC2CEF4F5F00ACFB41 /* Kingfisher in Frameworks */,
 				71653F602CF196FB006BB1EF /* SnapKit in Frameworks */,
+				71AD67572CF280F100869399 /* RxCocoa in Frameworks */,
 				713A31A92CEF4EBA00ACFB41 /* Then in Frameworks */,
 				713A31AF2CEF4F9E00ACFB41 /* Moya in Frameworks */,
 			);
@@ -141,6 +143,7 @@
 				713A31AB2CEF4F5F00ACFB41 /* Kingfisher */,
 				713A31AE2CEF4F9E00ACFB41 /* Moya */,
 				71653F5F2CF196FB006BB1EF /* SnapKit */,
+				71AD67562CF280F100869399 /* RxCocoa */,
 			);
 			productName = "SOPKATHON-4Team-iOS";
 			productReference = 713A30A42CEF42C600ACFB41 /* SOPKATHON-4Team-iOS.app */;
@@ -179,6 +182,7 @@
 				713A31AA2CEF4F5F00ACFB41 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				713A31AD2CEF4F9E00ACFB41 /* XCRemoteSwiftPackageReference "Moya" */,
 				71653F5E2CF196FB006BB1EF /* XCRemoteSwiftPackageReference "SnapKit" */,
+				71AD67552CF280F100869399 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 713A30A52CEF42C600ACFB41 /* Products */;
@@ -528,6 +532,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		71AD67552CF280F100869399 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -550,6 +562,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 71653F5E2CF196FB006BB1EF /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		71AD67562CF280F100869399 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 71AD67552CF280F100869399 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

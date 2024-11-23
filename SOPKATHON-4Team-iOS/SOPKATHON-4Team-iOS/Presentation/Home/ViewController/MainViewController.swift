@@ -28,6 +28,7 @@ class MainViewController: UIViewController {
         setStyle()
         setUI()
         setLayout()
+        setAddTarget()
     }
     
     // MARK: - UI&Layout
@@ -101,5 +102,16 @@ class MainViewController: UIViewController {
             $0.height.equalTo(228)
         }
         
+    }
+    
+
+    private func setAddTarget() {
+        invitationMakeButtonView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleInvitationMakeButtonTapped)))
+    }
+
+
+    @objc private func handleInvitationMakeButtonTapped() {
+        let makeViewController = AskViewController()
+        navigationController?.pushViewController(makeViewController, animated: true)
     }
 }

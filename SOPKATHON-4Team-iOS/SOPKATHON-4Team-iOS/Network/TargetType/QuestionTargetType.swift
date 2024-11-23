@@ -30,7 +30,7 @@ extension QuestionTargetType: TargetType {
         case .getQuestionnaire, .postQuestionnaire:
             return "/questionnaire"
         case .getQuestionnaires:
-            return "/api/v1/questionnaire"
+            return "/api/questionnaire/test"
         case .solveQuestionnaire:
             return "/me/questionnaires"
         }
@@ -57,13 +57,14 @@ extension QuestionTargetType: TargetType {
             )
             
         case .postQuestionnaire(let theme, let questions):
-            return .requestParameters(
-                parameters: [
-                    "theme": theme,
-                    "questions": questions
-                ],
-                encoding: JSONEncoding.default
-            )
+            let parameters: [String: Any] = [
+                "theme": theme,
+                "questions": questions.map {
+                    ["subject": $0.subject, "answer": $0.answer]
+                }
+            ]
+//            print("🔍 서버로 보낼 데이터: \(parameters)") // 디버깅용 출력
+            return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
             
         case .solveQuestionnaire(let answerList):
             return .requestParameters(
