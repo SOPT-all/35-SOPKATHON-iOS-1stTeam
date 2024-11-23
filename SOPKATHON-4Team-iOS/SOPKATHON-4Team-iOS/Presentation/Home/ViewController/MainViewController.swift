@@ -14,9 +14,12 @@ class MainViewController: UIViewController {
     
     // MARK: - UI Component
     
+    let name = "유빈"
     private let invitationCardView = InvitationCardView()
     private let invitationMakeButtonView = InvitationButtonView()
     private let invitationReceiveButtonView = InvitationButtonView()
+    private let topLogoImageView = UIImageView()
+    private let topTitleLabel = UILabel()
     
     // MARK: - View Life Cycle
     
@@ -46,22 +49,46 @@ class MainViewController: UIViewController {
         invitationCardView.do {
             $0.layer.cornerRadius = 20
         }
+        
+        topLogoImageView.do {
+            $0.image = .topLogo
+            $0.contentMode = .scaleAspectFit
+        }
+        
+        topTitleLabel.do {
+            $0.text = "\(name)님의 만남을\n더 맛있게 만들어드릴게요"
+            $0.font = .bodyB20
+            $0.numberOfLines = 0
+            $0.setLineSpacing(spacing: 5.0)
+        }
     }
     
     private func setUI() {
-        view.addSubviews(invitationMakeButtonView, invitationReceiveButtonView, invitationCardView)
+        view.addSubviews(topLogoImageView, topTitleLabel, invitationMakeButtonView, invitationReceiveButtonView, invitationCardView)
     }
     
     private func setLayout() {
+        topLogoImageView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(84)
+            $0.leading.equalToSuperview().offset(-42)
+            $0.width.equalTo(220)
+            $0.height.equalTo(211)
+        }
+        
+        topTitleLabel.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(183)
+            $0.trailing.equalToSuperview().offset(-23)
+        }
+        
         invitationMakeButtonView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(100)
+            $0.top.equalTo(topLogoImageView.snp.bottom).offset(-20)
             $0.leading.equalToSuperview().offset(17)
             $0.width.equalTo((UIScreen.main.bounds.width - 47) / 2)
             $0.height.equalTo(198)
         }
         
         invitationReceiveButtonView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(100)
+            $0.top.equalTo(invitationMakeButtonView)
             $0.trailing.equalToSuperview().offset(-17)
             $0.width.equalTo((UIScreen.main.bounds.width - 47) / 2)
             $0.height.equalTo(198)

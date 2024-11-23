@@ -23,3 +23,22 @@ struct SolvedQuestion: Codable {
     let answer: Bool
     let isCorrect: Bool
 }
+
+extension Answer {
+    static let mockData: [Answer] = {
+        let solvedQuestions = [
+            SolvedQuestion(subject: "주제 1", answer: true, isCorrect: true),
+            SolvedQuestion(subject: "주제 2", answer: false, isCorrect: false),
+            SolvedQuestion(subject: "주제 3", answer: true, isCorrect: true),
+            SolvedQuestion(subject: "주제 4", answer: false, isCorrect: true),
+            SolvedQuestion(subject: "주제 5", answer: true, isCorrect: false)
+        ]
+        
+        return [
+            Answer(theme: 1, questionnaireOwner: "유빈", solvedQuestions: solvedQuestions),
+            Answer(theme: 2, questionnaireOwner: "세민", solvedQuestions: solvedQuestions),
+            Answer(theme: 3, questionnaireOwner: "수민", solvedQuestions: solvedQuestions),
+            Answer(theme: 2, questionnaireOwner: "명진", solvedQuestions: solvedQuestions)
+        ]
+    }()
+}

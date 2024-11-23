@@ -12,6 +12,10 @@ import Then
 
 class InvitationCardView: UIView {
     
+    // MARK: - Properties
+    
+    private let answerData = Answer.mockData
+    
     // MARK: - UI Components
     
     private let titleLabel = UILabel()
@@ -35,11 +39,12 @@ class InvitationCardView: UIView {
     // MARK: - UI&Layout
     
     private func setStyle() {
-        backgroundColor = .gray
+        backgroundColor = .gray500
         
         titleLabel.do {
             $0.text = "내가 받은 초대장"
-            $0.font = .systemFont(ofSize: 20, weight: .bold)
+            $0.font = .bodyB18
+            $0.textColor = .white
         }
         
         invitationCardCollectionView.do {
@@ -63,8 +68,7 @@ class InvitationCardView: UIView {
         
         invitationCardCollectionView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(26)
-            $0.leading.equalToSuperview().offset(16)
-            $0.trailing.equalToSuperview()
+            $0.horizontalEdges.equalToSuperview().inset(16)
             $0.height.equalTo(140)
         }
     }
@@ -110,7 +114,7 @@ extension InvitationCardView: UICollectionViewDelegate {
 extension InvitationCardView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return answerData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,6 +122,8 @@ extension InvitationCardView: UICollectionViewDataSource {
             withReuseIdentifier: InvitationCardCollectionViewCell.className,
             for: indexPath) as? InvitationCardCollectionViewCell
         else { return UICollectionViewCell() }
+        
+        cell.configure(with: answerData[indexPath.item])
         
         return cell
     }
