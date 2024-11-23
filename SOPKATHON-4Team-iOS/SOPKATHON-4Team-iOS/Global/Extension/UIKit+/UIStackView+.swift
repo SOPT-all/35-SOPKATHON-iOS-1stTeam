@@ -13,7 +13,7 @@ extension UIStackView {
         views.forEach { self.addArrangedSubview($0) }
     }
     
-    func setStackView(axis: NSLayoutConstraint.Axis = .horizontal,
+    func setStackView(axis: NSLayoutConstraint.Axis = .vertical,
                       distribution: UIStackView.Distribution = .fillEqually,
                       alignment: UIStackView.Alignment = .fill,
                       spacing: CGFloat = 0) {
