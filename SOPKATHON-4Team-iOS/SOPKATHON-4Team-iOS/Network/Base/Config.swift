@@ -12,7 +12,7 @@ struct Config {
     
     // 토핑 Main Server
     static var baseURL: String {
-        return "http://15.165.106.248/api/v1/"
+        return "http://15.165.106.248:8080/api/v1"
     }
     
     static var defaultHeader: [String: String] {

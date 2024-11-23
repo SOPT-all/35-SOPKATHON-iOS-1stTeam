@@ -76,7 +76,7 @@ extension QuestionTargetType: TargetType {
     }
     
     var headers: [String: String]? {
-        return ["Content-Type": "application/json", "Authorization": "\(Config.userId)"]
+        return ["Content-Type": "application/json"]
     }
     
     var validationType: ValidationType {
