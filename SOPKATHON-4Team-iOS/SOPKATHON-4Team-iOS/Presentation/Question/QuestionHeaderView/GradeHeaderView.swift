@@ -16,7 +16,9 @@ class GradeHeaderView : UIView {
     
     let logoImageView: UIImageView = UIImageView()
 
-    var nickname: String = ""
+    var nickname: String = "수민"
+    
+    var backgroundIndex: Int = 0 //서버에서 배경 숫자 받아오기
 
     init() {
         super.init(frame: .zero)
@@ -63,7 +65,14 @@ class GradeHeaderView : UIView {
         logoImageView.do {
             $0.clipsToBounds = true
             $0.contentMode = .scaleAspectFill
-            $0.image = UIImage(resource: .gradeHeaderLogo)
+            switch backgroundIndex{
+            case 0:
+                $0.image = UIImage(resource: .ask1HeaderLogo)
+            case 1:
+                $0.image = UIImage(resource: .ask2HeaderLogo)
+            default:
+                $0.image = UIImage(resource: .ask3HeaderLogo)
+            }
         }
         
     }

@@ -16,7 +16,7 @@ class SolveHeaderView : UIView {
     
     let logoImageView: UIImageView = UIImageView()
 
-    var nickname: String = ""
+    var nickname: String = "수민"
 
     init() {
         super.init(frame: .zero)

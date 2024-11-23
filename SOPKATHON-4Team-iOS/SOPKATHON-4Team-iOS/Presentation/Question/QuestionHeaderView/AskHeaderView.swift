@@ -18,7 +18,7 @@ class AskHeaderView : UIView {
     
     let backgroundButtonStackView: UIStackView = UIStackView()
 
-    var nickname: String = ""
+    var nickname: String = "수민"
     
     private var selectedBackgroundIndex : Int = 0 { // 이 값을 백그라운드 값으로 서버에 넘겨줘야
         didSet {
@@ -69,6 +69,7 @@ class AskHeaderView : UIView {
         }
         
         backgroundButtonStackView.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(140)
             $0.leading.equalToSuperview().inset(27)
             $0.width.equalTo(180)
             $0.height.equalTo(52)
@@ -87,7 +88,7 @@ class AskHeaderView : UIView {
         logoImageView.do {
             $0.clipsToBounds = true
             $0.contentMode = .scaleAspectFill
-            $0.image = UIImage(resource: .askHeaderLogo)
+            $0.image = UIImage(resource: .ask1HeaderLogo)
         }
         
         backgroundButtonStackView.do {
@@ -100,6 +101,7 @@ class AskHeaderView : UIView {
                 $0.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
                 $0.tag = index
                 $0.layer.borderWidth = 1
+                $0.layer.cornerRadius = 8
                 setPlainButton($0)
             }
         }
@@ -119,6 +121,17 @@ private extension AskHeaderView {
     func updateBackgroundButton() {
         backgroundButtons.enumerated().forEach { index, button in
             index == selectedBackgroundIndex ? setSelectedButton(button) : setPlainButton(button)
+        }
+        
+        logoImageView.do {
+            switch selectedBackgroundIndex{
+            case 0:
+                $0.image = UIImage(resource: .ask1HeaderLogo)
+            case 1:
+                $0.image = UIImage(resource: .ask2HeaderLogo)
+            default:
+                $0.image = UIImage(resource: .ask3HeaderLogo)
+            }
         }
         
     }

@@ -49,9 +49,9 @@ class QuestionContentView : UIView {
         }
         
         questionStackView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(10)
+            $0.top.equalToSuperview().offset(224)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(63)
+            $0.height.equalTo(476)
         }
         
         footerButton.snp.makeConstraints {
@@ -63,12 +63,14 @@ class QuestionContentView : UIView {
     }
     
     func setStyle() {
+        self.backgroundColor = .background
+        
         questionStackView.do {
             for i in 1...3 {
                 let questionView = CustomQuestionView(questionType: questionType)
                 $0.addArrangedSubview(questionView)
             }
-            $0.setStackView(axis: .horizontal, spacing: 13)
+            $0.setStackView(spacing: 13)
         }
         
         footerButton.do {
