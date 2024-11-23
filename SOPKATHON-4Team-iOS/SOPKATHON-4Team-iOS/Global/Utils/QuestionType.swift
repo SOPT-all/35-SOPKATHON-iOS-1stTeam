@@ -11,4 +11,14 @@ enum QuestionType {
     case solve
     case grade
     
+    var footerButtonTitle : String {
+        switch self {
+        case .ask:
+            return "확인"
+        case .solve:
+            return "채점하기"
+        case .grade:
+            return "홈으로 돌아가기"
+        }
+    }
 }
