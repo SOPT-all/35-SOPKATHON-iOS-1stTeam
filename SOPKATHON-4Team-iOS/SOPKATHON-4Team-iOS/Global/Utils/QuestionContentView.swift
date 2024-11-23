@@ -12,7 +12,7 @@ import Then
 
 class QuestionContentView : UIView {
     
-    let headerView : UIView = UIView()
+    let headerView : UIView
     
     let questionStackView : UIStackView = UIStackView()
     
@@ -22,6 +22,7 @@ class QuestionContentView : UIView {
     
     init(questionType: QuestionType) {
         self.questionType = questionType
+        self.headerView = questionType.headerView
         
         super.init(frame: .zero)
         
@@ -62,7 +63,6 @@ class QuestionContentView : UIView {
     }
     
     func setStyle() {
-        
         questionStackView.do {
             for i in 1...3 {
                 let questionView = CustomQuestionView(questionType: questionType)
@@ -74,7 +74,6 @@ class QuestionContentView : UIView {
         footerButton.do {
             $0.makeOrangeButton(title: questionType.footerButtonTitle)
         }
-        
     }
     
 }
