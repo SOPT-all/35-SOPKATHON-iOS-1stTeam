@@ -18,9 +18,9 @@ class CustomQuestionView: UIView {
     
     var textCountLabel: UILabel = UILabel()
     
-    lazy var trueButton: CustomButton = CustomButton(title: "True", font: .bodyB16, cornerRadius: 16)
+    lazy var trueButton: UIButton = UIButton()
     
-    lazy var falseButton: CustomButton = CustomButton(title: "False", font: .bodyB16, cornerRadius: 16)
+    lazy var falseButton: UIButton = UIButton()
     
     private var questionType: QuestionType
     
@@ -103,19 +103,26 @@ class CustomQuestionView: UIView {
             $0.numberOfLines = 0
         }
         
-        trueButton
-            .setEnabled(false)
-            .setButtonStatus(normalColor: UIColor(resource: .orange), normalTextColor: .white, disableColor: UIColor(resource: .gray300), disableTextColor: UIColor(resource: .gray800))
-            .layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        trueButton.addTarget(self, action: #selector(trueButtonTapped), for: .touchUpInside)
-        
-        falseButton
-            .setEnabled(false)
-            .setButtonStatus(normalColor: UIColor(resource: .orange), normalTextColor: .white, disableColor: UIColor(resource: .gray300), disableTextColor: UIColor(resource: .gray800))
-            .layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        
-        falseButton.addTarget(self, action: #selector(falseButtonTapped), for: .touchUpInside)
+        [trueButton, falseButton].forEach {
+            $0.isSelected = false
+            $0.setTitleColor(.gray800, for: .normal)
+            $0.setTitleColor(.white, for: .selected)
+            $0.setBackgroundColor(.gray300, for: .normal)
+            $0.setBackgroundColor(.tpOrange, for: .selected)
+            $0.titleLabel?.font = .bodyB16
+            $0.layer.cornerRadius = 16
+            $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        }
+                                      
+        trueButton.do {
+            $0.setTitle("True", for: .normal)
+            $0.addTarget(self, action: #selector(trueButtonTapped), for: .touchUpInside)
+        }
+
+        falseButton.do {
+            $0.setTitle("False", for: .normal)
+            $0.addTarget(self, action: #selector(falseButtonTapped), for: .touchUpInside)
+        }
         
     }
     
@@ -125,15 +132,14 @@ extension CustomQuestionView {
     
     @objc
     func trueButtonTapped() {
-        print("jdsfjsldkjflakdjf")
-        trueButton.setEnabled(true)
-        falseButton.setEnabled(false)
+        trueButton.isSelected = true
+        falseButton.isSelected = false
     }
     
     @objc
     func falseButtonTapped() {
-        falseButton.setEnabled(true)
-        trueButton.setEnabled(false)
+        falseButton.isSelected = true
+        trueButton.isSelected = false
     }
     
 }
@@ -150,7 +156,7 @@ extension CustomQuestionView {
     }
     
     func buttonSelected() -> Bool {
-        let trueValue = trueButton.isEnabled ? true : false
+        let trueValue = trueButton.isSelected ? true : false
         return trueValue
     }
     
