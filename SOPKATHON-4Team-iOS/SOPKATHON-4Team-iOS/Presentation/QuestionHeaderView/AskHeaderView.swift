@@ -78,9 +78,9 @@ class AskHeaderView : UIView {
     func setStyle() {
         
         titleLabel.do {
-            $0.text = "\(nickname)님의 만남이 더 맛있어지는 중 !"
+            $0.text = "\(nickname)님의 만남이\n더 맛있어지는 중!"
             $0.textColor = .black
-            $0.numberOfLines = 2
+            $0.numberOfLines = 0
             $0.font = .bodyB20
         }
         
