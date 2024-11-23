@@ -22,7 +22,11 @@ class CustomQuestionView: UIView {
     
     lazy var falseButton: UIButton = UIButton()
     
+    private var isCorrectImageView = UIImageView()
+    
     private var questionType: QuestionType
+    
+    var isCorrect: Bool = true
     
     init(questionType: QuestionType) {
         self.questionType = questionType
@@ -43,6 +47,7 @@ class CustomQuestionView: UIView {
     func setHierarchy() {
         self.addSubviews(questionTextView,
                          questionTextLabel,
+                         isCorrectImageView,
                          textCountLabel,
                          trueButton,
                          falseButton)
@@ -56,10 +61,27 @@ class CustomQuestionView: UIView {
             $0.height.equalTo(63)
         }
         
-        questionTextLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(10)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(63)
+        switch questionType {
+        case .grade:
+            isCorrectImageView.snp.makeConstraints {
+                $0.top.equalToSuperview().offset(10)
+                $0.leading.equalToSuperview().offset(20)
+                $0.size.equalTo(22)
+            }
+            
+            questionTextLabel.snp.makeConstraints {
+                $0.top.equalToSuperview().offset(10)
+                $0.leading.equalTo(isCorrectImageView.snp.trailing).offset(5)
+                $0.height.equalTo(63)
+            }
+        case .solve:
+            questionTextLabel.snp.makeConstraints {
+                $0.top.equalToSuperview().offset(10)
+                $0.horizontalEdges.equalToSuperview().inset(20)
+                $0.height.equalTo(63)
+            }
+        default:
+            return 
         }
         
         textCountLabel.snp.makeConstraints {
@@ -92,9 +114,22 @@ class CustomQuestionView: UIView {
         switch questionType {
         case .ask:
             questionTextLabel.isHidden = true
-        default:
+            isCorrectImageView.isHidden = true
+        case .solve:
             questionTextView.isHidden = true
             textCountLabel.isHidden = true
+            isCorrectImageView.isHidden = true
+        case .grade:
+            questionTextView.isHidden = true
+            textCountLabel.isHidden = true
+            self.layer.borderWidth = 1.0
+            if isCorrect {
+                self.layer.borderColor = UIColor.purple100.cgColor
+                isCorrectImageView.image = .iconCorrect
+            } else {
+                self.layer.borderColor = UIColor.tpRed.cgColor
+                isCorrectImageView.image = .iconWrong
+            }
         }
         
         questionTextView.do {
