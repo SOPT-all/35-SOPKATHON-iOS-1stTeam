@@ -66,7 +66,7 @@ class OnboardingViewController : UIViewController {
             $0.setTitle("시작하기", for: .normal)
             $0.setTitleColor(.white, for: .normal)
             $0.titleLabel?.font = .bodyB18
-            $0.backgroundColor = UIColor(resource: .orange)
+            $0.backgroundColor = UIColor(resource: .tpOrange)
             $0.layer.cornerRadius = 8
             $0.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
         }
