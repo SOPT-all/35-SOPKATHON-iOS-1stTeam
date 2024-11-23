@@ -10,7 +10,7 @@ import SnapKit
 
 class ScoreView: UIView {
     
-    private var score: Int = 3 {
+    var score: Int = 3 {
         didSet {
             updateScoreView()
         }
@@ -91,7 +91,7 @@ class ScoreView: UIView {
         }
     }
     
-    private func updateScoreView() {
+    func updateScoreView() {
         countLabel.text = "\(score)/3"
         
         switch score {

@@ -9,7 +9,7 @@ import UIKit
 
 class ScoreViewController: UIViewController {
     
-    private let score = ScoreView()
+    let scoreView = ScoreView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +24,11 @@ class ScoreViewController: UIViewController {
     }
     
     private func setUI() {
-        view.addSubview(score)
+        view.addSubview(scoreView)
     }
     
     private func setLayout() {
-        score.snp.makeConstraints{
+        scoreView.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }
     }
