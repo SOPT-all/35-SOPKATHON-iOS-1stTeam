@@ -93,9 +93,25 @@ class CustomQuestionView: UIView {
             $0.text = "질문을 입력하세요"
             $0.isEditable = true
         }
+        
         questionTextLabel.do {
             $0.numberOfLines = 0
         }
+        
     }
+    
+}
+
+extension CustomQuestionView {
+    
+    func setQuestionText(text: String) {
+        switch questionType {
+        case .ask:
+            questionTextView.text = text
+        default:
+            questionTextLabel.text = text
+        }
+    }
+    
     
 }
