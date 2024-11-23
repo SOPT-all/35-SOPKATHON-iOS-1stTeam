@@ -27,7 +27,7 @@ public final class CustomButton: UIButton {
 
     public init(
         title: String,
-        font: UIFont = .systemFont(ofSize: 16),
+        font: UIFont = .bodyB18,
         cornerRadius: CGFloat = 0,
         borderColor: UIColor = .clear
     ) {
