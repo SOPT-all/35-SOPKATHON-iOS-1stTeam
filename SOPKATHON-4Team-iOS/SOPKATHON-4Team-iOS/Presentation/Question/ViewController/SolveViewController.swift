@@ -25,6 +25,15 @@ class SolveViewController: UIViewController {
         solveContentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
+        solveContentView.footerButton.addTarget(self, action: #selector(goToResult), for: .touchUpInside)
     }
     
+
+    @objc
+    private func goToResult() {
+        let scoreVC = ScoreViewController()
+        guard let window = self.view.window else { return }
+        ViewControllerUtils.setRootViewController(window: window, viewController: scoreVC, withAnimation: true)
+    }
 }

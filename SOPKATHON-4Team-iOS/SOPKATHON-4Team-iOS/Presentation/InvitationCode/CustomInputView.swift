@@ -9,8 +9,8 @@ import UIKit
 
 import SnapKit
 
-class InputView: UIView {
-    
+class CustomInputView: UIView {
+
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "초대 코드를 입력하세요"
@@ -19,7 +19,7 @@ class InputView: UIView {
         return label
     }()
     
-    private let codeTextField: UITextField = {
+    let codeTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = ""
         textField.clearButtonMode = .whileEditing
@@ -31,7 +31,7 @@ class InputView: UIView {
         return textField
     }()
     
-    private var warningButton: UIButton = {
+    var warningButton: UIButton = {
         let button = UIButton()
         button.setTitle("초대코드가 유효하지 않습니다", for: .normal)
         button.backgroundColor = .tpOrange.withAlphaComponent(0.5)
@@ -42,24 +42,20 @@ class InputView: UIView {
         return button
     }()
     
-    private let goToInvitationButton = CustomButton(
-        title: "초대장 열어보기",
-        font: UIFont.bodyB18,
-        cornerRadius: 8
-    ).setButtonStatus(
-        normalColor: .tpOrange,
-        normalTextColor: .white,
-        disableColor: .gray600,
-        disableTextColor: .white
-    )
+    var goToInvitationButton : UIButton = {
+        let button = UIButton()
+        button.makeOrangeButton(title: "초대장 열어보기")
+        return button
+    }()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         setUI()
         setLayout()
-        setActions()
-        updateButtonState()
+//        setActions()
+//        updateButtonState()
     }
     
     required init?(coder: NSCoder) {
@@ -98,24 +94,19 @@ class InputView: UIView {
         }
     }
     
-    private func setActions() {
-        codeTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        goToInvitationButton.addTarget(self, action: #selector(goToInvitationButtonTapped), for: .touchUpInside)
-    }
-    
-    @objc private func textFieldDidChange() {
-        updateButtonState()
-    }
-    
-    private func updateButtonState() {
-        goToInvitationButton.setEnabled(!(codeTextField.text?.isEmpty ?? true))
-    }
-    
-    @objc private func goToInvitationButtonTapped() {
-        guard let code = codeTextField.text, code.count == 6, Int(code) != nil else {
-            warningButton.isHidden = false
-            return
-        }
-        warningButton.isHidden = true
-    }
+//    private func setButton() {
+//        
+//    }
+//    private func setActions() {
+//        codeTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+//        goToInvitationButton.addTarget(self, action: #selector(goToInvitationButtonTapped), for: .touchUpInside)
+//    }
+//    
+//    @objc private func textFieldDidChange() {
+//        updateButtonState()
+//    }
+//    
+//    private func updateButtonState() {
+//        goToInvitationButton.setEnabled(!(codeTextField.text?.isEmpty ?? true))
+//    }
 }

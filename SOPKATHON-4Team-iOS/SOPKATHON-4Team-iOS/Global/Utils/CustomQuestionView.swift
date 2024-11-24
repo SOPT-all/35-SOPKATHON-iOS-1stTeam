@@ -17,7 +17,7 @@ class CustomQuestionView: UIView {
     
     var questionTextView: UITextView = UITextView()
     
-    let questionTextLabel: UILabel = UILabel()
+    var questionTextLabel: UILabel = UILabel()
     
     var textCountLabel: UILabel = UILabel()
     

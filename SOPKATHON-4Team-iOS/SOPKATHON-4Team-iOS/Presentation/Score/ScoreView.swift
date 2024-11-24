@@ -38,7 +38,7 @@ class ScoreView: UIView {
         return imageView
     }()
     
-    private let goToHomeButton = CustomButton(
+    var goToScoreHomeButton = CustomButton(
         title: "홈으로 돌아가기",
         font: UIFont.bodyB18,
         cornerRadius: 8
@@ -62,7 +62,7 @@ class ScoreView: UIView {
     }
     
     private func setUI() {
-        addSubviews(countLabel, descriptionLabel, scoreImageView, goToHomeButton)
+        addSubviews(countLabel, descriptionLabel, scoreImageView, goToScoreHomeButton)
     }
     
     private func setLayout() {
@@ -83,7 +83,7 @@ class ScoreView: UIView {
             $0.height.equalTo(205)
         }
         
-        goToHomeButton.snp.makeConstraints {
+        goToScoreHomeButton.snp.makeConstraints {
             $0.bottom.equalToSuperview().inset(45)
             $0.centerX.equalToSuperview()
             $0.width.equalTo(341)

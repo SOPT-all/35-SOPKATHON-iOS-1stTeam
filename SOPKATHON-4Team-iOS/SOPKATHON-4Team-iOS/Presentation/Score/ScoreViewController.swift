@@ -9,7 +9,7 @@ import UIKit
 
 class ScoreViewController: UIViewController {
     
-    private let score = ScoreView()
+    let score = ScoreView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +21,7 @@ class ScoreViewController: UIViewController {
     
     private func setStyle() {
         self.view.backgroundColor = .background
+        score.goToScoreHomeButton.addTarget(self, action: #selector(goToHome), for: .touchUpInside)
     }
     
     private func setUI() {
@@ -31,5 +32,13 @@ class ScoreViewController: UIViewController {
         score.snp.makeConstraints{
             $0.edges.equalToSuperview()
         }
+    }
+    
+    @objc
+    private func goToHome() {
+        let onboardingViewController = MainViewController()
+        guard let window = self.view.window else { return }
+        
+        ViewControllerUtils.setRootViewController(window: window, viewController: onboardingViewController, withAnimation: true)
     }
 }
