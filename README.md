@@ -1,4 +1,4 @@
-## 35-SOPKATHON-iOS-FortuneCookie
+## 35-SOPKATHON-iOS-FTIsland
 
 # 🍒 토핑 (Toffing)
 
@@ -12,7 +12,7 @@
 | [이명진](https://github.com/thingineer) | [이수민](https://github.com/cirtuare) | [이세민](https://github.com/sem-git) | [최유빈](https://github.com/choiyoubin) |
 | --- | --- | --- | --- |
 | <img src="https://avatars.githubusercontent.com/u/88179341?v=4" width="250"/> | <img src="https://avatars.githubusercontent.com/u/86866423?v=4" width="250"/> | <img src="https://avatars.githubusercontent.com/u/124458036?v=4" width="250"/> | <img src="https://avatars.githubusercontent.com/u/48716638?v=4" width="250"/> |
-| <p align="center">`커스텀 버튼 & 로그인뷰`<br>`네트워크 세팅`</p> | <p align="center">`커스텀 질문 뷰`<br>`질문 작성 뷰 & 질문 맞추기 뷰`</p> | <p align="center">`초대 코드 뷰`<br>`점수 확인 뷰`</p> | <p align="center">`홈`</p> | 
+| <p align="center">`커스텀 버튼`<br>`네트워크 세팅 및 API 연결`</p> | <p align="center">`스플래시 & 온보딩`<br>`질문 작성/맞추기/채점 뷰`</p> | <p align="center">`초대 코드 뷰 & 점수 확인 뷰`</p> | <p align="center">`홈`</p> | 
 <br>
 
 
@@ -50,7 +50,8 @@
 <br>
 
 ## 시연영상
-https://github.com/user-attachments/assets/366ec5fa-b123-4097-8e80-b958c31c2456
+https://github.com/user-attachments/assets/efe40793-c815-484d-8455-a74b3978c54c
+
 
 ## 🍒 사진
 
