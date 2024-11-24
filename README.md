@@ -49,8 +49,14 @@
 5. 1명 이상에게 Approve을 받고, 필요하다면 코드리뷰를 반영한 후 해당 브랜치를 main에 머지한다.
 <br>
 
+## 시연영상
+https://github.com/user-attachments/assets/366ec5fa-b123-4097-8e80-b958c31c2456
+
 ## 🍒 사진
 
 ### 🔥 Before
 | <img src="https://github.com/user-attachments/assets/717ff5e2-0460-43d2-a778-0708434eafc6" width="500"/>|<img src="https://github.com/user-attachments/assets/dcc1d489-1b74-4710-ae97-ef1b74664996" width="500"/> |
+
+### After ㅋㅋ
+![IMG_4087](https://github.com/user-attachments/assets/473135d1-c520-4962-b733-ff23fb49dfaa)
 
