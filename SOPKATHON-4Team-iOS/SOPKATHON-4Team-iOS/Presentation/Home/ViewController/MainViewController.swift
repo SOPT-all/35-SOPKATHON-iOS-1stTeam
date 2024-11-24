@@ -107,6 +107,7 @@ class MainViewController: UIViewController {
 
     private func setAddTarget() {
         invitationMakeButtonView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleInvitationMakeButtonTapped)))
+        invitationReceiveButtonView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleInvitationReceiveButtonTapped)))
     }
 
 
@@ -114,4 +115,10 @@ class MainViewController: UIViewController {
         let makeViewController = AskViewController()
         navigationController?.pushViewController(makeViewController, animated: true)
     }
+    
+    @objc private func handleInvitationReceiveButtonTapped() {
+        let receiveViewController = InputViewController()
+        navigationController?.pushViewController(receiveViewController, animated: true)
+    }
+    
 }

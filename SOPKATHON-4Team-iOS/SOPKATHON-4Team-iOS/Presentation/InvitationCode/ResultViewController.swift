@@ -51,8 +51,6 @@ class ResultViewController: UIViewController {
     @objc
     private func goToHome() {
         let onboardingViewController = MainViewController()
-        guard let window = self.view.window else { return }
-        
-        ViewControllerUtils.setRootViewController(window: window, viewController: onboardingViewController, withAnimation: true)
+        navigationController?.pushViewController(onboardingViewController, animated: false)
     }
 }

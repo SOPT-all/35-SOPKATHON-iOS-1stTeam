@@ -33,6 +33,8 @@ class SolveViewController: UIViewController {
         solveContentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
+        solveContentView.footerButton.addTarget(self, action: #selector(goToResult), for: .touchUpInside)
     }
     
     private func updateAnswerList() {
@@ -82,5 +84,12 @@ class SolveViewController: UIViewController {
             scoreVC.scoreView.score = count
             self.navigationController?.pushViewController(scoreVC, animated: false)
         }
+    }
+
+    @objc
+    private func goToResult() {
+        let scoreVC = ScoreViewController()
+        guard let window = self.view.window else { return }
+        ViewControllerUtils.setRootViewController(window: window, viewController: scoreVC, withAnimation: true)
     }
 }
