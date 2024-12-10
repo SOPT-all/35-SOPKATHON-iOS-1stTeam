@@ -9,7 +9,7 @@ import UIKit
 
 class ScoreViewController: UIViewController {
     
-    let score = ScoreView()
+    let scoreView = ScoreView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class ScoreViewController: UIViewController {
     
     private func setStyle() {
         self.view.backgroundColor = .background
-        score.goToScoreHomeButton.addTarget(self, action: #selector(goToHome), for: .touchUpInside)
+        scoreView.goToScoreHomeButton.addTarget(self, action: #selector(goToHome), for: .touchUpInside)
     }
     
     private func setUI() {
