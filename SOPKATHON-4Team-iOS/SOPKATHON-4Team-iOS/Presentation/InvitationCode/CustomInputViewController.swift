@@ -71,8 +71,7 @@ extension InputViewController {
         guard let invitationCode = Int(customInputView.codeTextField.text ?? "")
         else { return }
         
-        provider.request(.getQuestionnaires(invitationCode: invitationCode)) { [weak self] result in
-            guard let self = self else { return }
+        provider.request(.getQuestionnaires(invitationCode: invitationCode)) { result in
             
             switch result {
             case .success(let response):
