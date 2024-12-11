@@ -30,7 +30,7 @@ extension QuestionTargetType: TargetType {
         case .getQuestionnaire, .postQuestionnaire:
             return "/questionnaire"
         case .getQuestionnaires:
-            return "/api/questionnaire/test"
+            return "/questionnaire"
         case .solveQuestionnaire:
             return "/me/questionnaires"
         }
