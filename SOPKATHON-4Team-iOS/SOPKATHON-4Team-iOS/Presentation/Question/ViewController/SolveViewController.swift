@@ -16,6 +16,8 @@ class SolveViewController: UIViewController {
         return QuestionContentView(questionType: .solve)
     }()
     
+    var questions: [String] = []
+    
     var answerList: [Int] = []
     
     // MARK: - View Life Cycles
@@ -25,7 +27,7 @@ class SolveViewController: UIViewController {
         
         setupUI()
         setButton()
-        updateAnswerList()
+        setQuestionContentView()
     }
     
     private func setupUI() {
@@ -35,6 +37,10 @@ class SolveViewController: UIViewController {
         }
         
         solveContentView.footerButton.addTarget(self, action: #selector(goToResult), for: .touchUpInside)
+    }
+    
+    func setQuestionContentView() {
+        solveContentView.questionData = questions
     }
     
     private func updateAnswerList() {
