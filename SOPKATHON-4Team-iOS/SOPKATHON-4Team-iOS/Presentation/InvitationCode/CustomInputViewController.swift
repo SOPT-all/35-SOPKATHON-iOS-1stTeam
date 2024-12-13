@@ -40,8 +40,7 @@ class InputViewController: UIViewController {
             customInputView.warningButton.isHidden = false
             return
         }
-        guard let intCode = Int(code)
-        else { return }
+        guard let intCode = Int(code) else { return }
         
         let invitationCode = inviteCodeAPI(invitationCode: intCode)
         
@@ -53,7 +52,10 @@ class InputViewController: UIViewController {
                 case .success(let data):
                     let solveVC = SolveViewController()
                     solveVC.questions = data
-                    guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow }) else { return }
+                    guard let window = self.view.window else {
+                        print("window is nil")
+                        return
+                    }
                     ViewControllerUtils.setRootViewController(window: window, viewController: solveVC, withAnimation: true)
                     self.customInputView.warningButton.isHidden = true
                 case .failure(let error):
@@ -71,7 +73,8 @@ extension InputViewController {
         guard let invitationCode = Int(customInputView.codeTextField.text ?? "")
         else { return }
         
-        provider.request(.getQuestionnaires(invitationCode: invitationCode)) { result in
+        provider.request(.getQuestionnaires(invitationCode: invitationCode)) { [weak self] result in
+            guard let self = self else { return }
             
             switch result {
             case .success(let response):
@@ -85,18 +88,22 @@ extension InputViewController {
                         } else {
                             print("응답에서 질문 목록울 찾을 수 없습니다.")
                             completion(.failure(.networkFail))
+                            self.customInputView.warningButton.isHidden = false
                         }
                     } else {
                         print("질문지 로딩 실패: \(responseData.message)")
                         completion(.failure(.networkFail))
+                        self.customInputView.warningButton.isHidden = false
                     }
                 } catch {
                     print("응답 디코딩 실패: \(error.localizedDescription)")
                     completion(.failure(.networkFail))
+                    self.customInputView.warningButton.isHidden = false
                 }
             case .failure(let error):
                 print("서버 요청 실패: \(error.localizedDescription)")
                 completion(.failure(.networkFail))
+                self.customInputView.warningButton.isHidden = false
             }
         }
     }
