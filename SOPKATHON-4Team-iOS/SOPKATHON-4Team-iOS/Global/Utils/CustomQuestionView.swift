@@ -62,13 +62,14 @@ class CustomQuestionView: UIView {
     }
     
     func setLayout() {
-        questionTextView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(10)
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(63)
-        }
         
         switch questionType {
+        case .ask:
+            questionTextView.snp.makeConstraints {
+                $0.top.equalToSuperview().offset(10)
+                $0.horizontalEdges.equalToSuperview().inset(20)
+                $0.height.equalTo(63)
+            }
         case .grade:
             isCorrectImageView.snp.makeConstraints {
                 $0.top.equalToSuperview().offset(10)
@@ -87,8 +88,6 @@ class CustomQuestionView: UIView {
                 $0.horizontalEdges.equalToSuperview().inset(20)
                 $0.height.equalTo(63)
             }
-        default:
-            return 
         }
         
         textCountLabel.snp.makeConstraints {
