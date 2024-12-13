@@ -18,8 +18,8 @@ class AskHeaderView : UIView {
     
     let backgroundButtonStackView: UIStackView = UIStackView()
 
-    var nickname: String = "수민"
-    
+    let nickname = UserManager.shared.nickName ?? "유저"
+        
     var selectedBackgroundIndex : Int = 0 { // 이 값을 백그라운드 값으로 서버에 넘겨줘야
         didSet {
             updateBackgroundButton()

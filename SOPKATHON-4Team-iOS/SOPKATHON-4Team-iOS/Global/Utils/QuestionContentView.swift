@@ -19,6 +19,12 @@ class QuestionContentView: UIView {
     let questionStackView: UIStackView = UIStackView()
     let footerButton: UIButton = UIButton()
     
+    var questionData : [String] = ["나는 오늘 솝커톤을 했다 !", "나는 빵을 좋아한다", "나는 젤리를 좋아한다"] {
+        didSet {
+            updateQuestions()
+        }
+    }
+    
     let behaviorlelay: BehaviorRelay = BehaviorRelay(value: false)
     
     var invitedCode: Int = 0
@@ -70,14 +76,14 @@ class QuestionContentView: UIView {
         
     }
     
-    var dummyData : [String] = ["나는 오늘 솝커톤을 했다 !", "나는 빵을 좋아한다", "나는 젤리를 좋아한다"]
+    
     func setStyle() {
         self.backgroundColor = .background
         
         questionStackView.do {
             for i in 1...3 {
                 let questionView = CustomQuestionView(questionType: questionType)
-                questionView.questionTextLabel.text = dummyData[i-1]
+                questionView.questionTextLabel.text = questionData[i-1]
                 $0.addArrangedSubview(questionView)
             }
             $0.setStackView(spacing: 13)
@@ -85,6 +91,19 @@ class QuestionContentView: UIView {
         
         footerButton.do {
             $0.makeOrangeButton(title: questionType.footerButtonTitle)
+        }
+    }
+    
+    func updateQuestions() {
+        questionStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        
+        questionStackView.do {
+            for i in 1...3 {
+                let questionView = CustomQuestionView(questionType: questionType)
+                questionView.questionTextLabel.text = questionData[i-1]
+                $0.addArrangedSubview(questionView)
+            }
+            $0.setStackView(spacing: 13)
         }
     }
     
