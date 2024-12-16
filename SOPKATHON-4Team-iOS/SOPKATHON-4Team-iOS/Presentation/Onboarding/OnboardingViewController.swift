@@ -21,10 +21,14 @@ class OnboardingViewController : UIViewController {
     
     let startButton: UIButton = UIButton()
     
+    private var keyBoardHandler: KeyboardHandler?
+    
     override func viewDidLoad() {
         setStyle()
         setHierarchy()
         setLayout()
+        hideKeyboard()
+        keyBoardHandler = KeyboardHandler(textField: nicknameTextField)
     }
     
     func setHierarchy() {
