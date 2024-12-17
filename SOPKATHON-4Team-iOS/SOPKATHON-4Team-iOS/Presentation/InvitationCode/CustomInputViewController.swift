@@ -79,12 +79,13 @@ extension InputViewController {
             switch result {
             case .success(let response):
                 do {
-                    let responseData = try response.map(BaseResponse<[String]>.self)
+                    let responseData = try response.map(BaseResponse<QuestionData>.self)
                     
                     if responseData.status == 200 {
-                        if let data = responseData.data {
+                        if let data = responseData.data
+                        {
                             print("질문지를 성공적으로 불러왔습니다. 질문목록: \(data)")
-                            completion(.success(data))
+                            completion(.success(data.questions))
                         } else {
                             print("응답에서 질문 목록울 찾을 수 없습니다.")
                             completion(.failure(.networkFail))
