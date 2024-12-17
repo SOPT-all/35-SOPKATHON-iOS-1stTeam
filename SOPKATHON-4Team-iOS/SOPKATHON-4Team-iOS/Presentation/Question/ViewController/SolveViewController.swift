@@ -19,6 +19,7 @@ class SolveViewController: UIViewController {
     var questions: [String] = []
     
     var answerList: [Int] = []
+    var questionId: Int = 0
     
     // MARK: - View Life Cycles
     
@@ -61,11 +62,11 @@ class SolveViewController: UIViewController {
     @objc
     private func buttonTapped() {
         updateAnswerList()  // 버튼 탭 시 최신 상태 업데이트
-        postSolvedAnswer(answerList: answerList)
+        postSolvedAnswer(questionId: questionId, answerList: answerList)
     }
     
-    private func postSolvedAnswer(answerList: [Int]) {
-        Providers.questionProvider.request(.solveQuestionnaire(answerList: answerList)) { [weak self] result in
+    private func postSolvedAnswer(questionId: Int, answerList: [Int]) {
+        Providers.questionProvider.request(.solveQuestionnaire(questionId: questionId, answerList: answerList)) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
@@ -75,6 +76,7 @@ class SolveViewController: UIViewController {
                                                                      from: response.data)
                     let count = answerCountResponse.answerCount
                     handleAnswerCount(count)
+                    print("성공!@!@!@!")
                 } catch {
                     print("Decoding error: \(error)")
                 }
