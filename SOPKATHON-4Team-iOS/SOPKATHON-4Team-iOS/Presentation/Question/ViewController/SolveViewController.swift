@@ -36,8 +36,6 @@ class SolveViewController: UIViewController {
         solveContentView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
-        solveContentView.footerButton.addTarget(self, action: #selector(goToResult), for: .touchUpInside)
     }
     
     func setQuestionContentView() {
@@ -62,42 +60,51 @@ class SolveViewController: UIViewController {
     @objc
     private func buttonTapped() {
         updateAnswerList()  // 버튼 탭 시 최신 상태 업데이트
-        postSolvedAnswer(questionId: questionId, answerList: answerList)
-    }
-    
-    private func postSolvedAnswer(questionId: Int, answerList: [Int]) {
-        Providers.questionProvider.request(.solveQuestionnaire(questionId: questionId, answerList: answerList)) { [weak self] result in
+        postSolvedAnswer(questionId: questionId, answerList: answerList) { [weak self] result in
             guard let self = self else { return }
             
             switch result {
+            case .success(let data):
+                let scoreVC = ScoreViewController()
+                guard let window = self.view.window else { return }
+                ViewControllerUtils.setRootViewController(window: window, viewController: scoreVC, withAnimation: true)
+                scoreVC.scoreView.score = data
+            case .failure(let error):
+                print("질문 조회 실패: \(error.localizedDescription)")
+            }
+            
+        }
+
+    }
+    
+    private func postSolvedAnswer(questionId: Int, answerList: [Int], completion: @escaping(Result<Int, FTError>) -> Void) {
+        Providers.questionProvider.request(.solveQuestionnaire(questionId: questionId, answerList: answerList)) { result in
+            switch result {
             case .success(let response):
                 do {
-                    let answerCountResponse = try JSONDecoder().decode(AnswerCountResponse.self,
-                                                                     from: response.data)
-                    let count = answerCountResponse.answerCount
-                    handleAnswerCount(count)
-                    print("성공!@!@!@!")
+                    let answerCountResponse = try response.map(BaseResponse<Int>.self)
+                    
+                    if answerCountResponse.status == 200 {
+                        if let count = answerCountResponse.data {
+                            print("채점이 성공했습니다.. 맞은 개수: \(count)")
+                            completion(.success(count))
+                        } else {
+                            completion(.failure(.networkFail))
+                            print("응답에서 초대 코드를 찾을 수 없습니다.")
+                        }
+                    } else {
+                        completion(.failure(.networkFail))
+                        print("질문지 생성 실패: \(answerCountResponse.message)")
+                    }
                 } catch {
+                    completion(.failure(.networkFail))
                     print("Decoding error: \(error)")
                 }
             case .failure(let error):
+                completion(.failure(.networkFail))
                 print("Network error: \(error)")
+                
             }
         }
-    }
-    
-    private func handleAnswerCount(_ count: Int) {
-        DispatchQueue.main.async {
-            let scoreVC = ScoreViewController()
-            scoreVC.scoreView.score = count
-            self.navigationController?.pushViewController(scoreVC, animated: false)
-        }
-    }
-
-    @objc
-    private func goToResult() {
-        let scoreVC = ScoreViewController()
-        guard let window = self.view.window else { return }
-        ViewControllerUtils.setRootViewController(window: window, viewController: scoreVC, withAnimation: true)
     }
 }
