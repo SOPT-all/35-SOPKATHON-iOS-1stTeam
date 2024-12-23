@@ -51,7 +51,8 @@ class InputViewController: UIViewController {
                 switch result {
                 case .success(let data):
                     let solveVC = SolveViewController()
-                    solveVC.questions = data
+                    solveVC.questions = data.questions
+                    solveVC.questionId = data.questionId
                     guard let window = self.view.window else {
                         print("window is nil")
                         return
@@ -67,7 +68,7 @@ class InputViewController: UIViewController {
 }
 
 extension InputViewController {
-    func getQuestion(invitationCode: inviteCodeAPI, completion: @escaping(Result<[String], FTError>) -> Void) {
+    func getQuestion(invitationCode: inviteCodeAPI, completion: @escaping(Result<QuestionData, FTError>) -> Void) {
         let provider = Providers.questionProvider
         
         guard let invitationCode = Int(customInputView.codeTextField.text ?? "")
@@ -79,11 +80,12 @@ extension InputViewController {
             switch result {
             case .success(let response):
                 do {
-                    let responseData = try response.map(BaseResponse<[String]>.self)
+                    let responseData = try response.map(BaseResponse<QuestionData>.self)
                     
                     if responseData.status == 200 {
-                        if let data = responseData.data {
-                            print("질문지를 성공적으로 불러왔습니다. 질문목록: \(data)")
+                        if let data = responseData.data
+                        {
+                            print("질문지를 성공적으로 불러왔습니다. 질문목록: \(data.questions)")
                             completion(.success(data))
                         } else {
                             print("응답에서 질문 목록울 찾을 수 없습니다.")
@@ -97,7 +99,7 @@ extension InputViewController {
                     }
                 } catch {
                     print("응답 디코딩 실패: \(error.localizedDescription)")
-                    completion(.failure(.networkFail))
+                    completion(.failure(.decodeFail))
                     self.customInputView.warningButton.isHidden = false
                 }
             case .failure(let error):

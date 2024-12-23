@@ -12,7 +12,7 @@ enum QuestionTargetType {
     case getQuestionnaire
     case getQuestionnaires(invitationCode: Int)
     case postQuestionnaire(theme: Int, questions: [Question])
-    case solveQuestionnaire(answerList: [Int])
+    case solveQuestionnaire(questionId: Int, answerList: [Int])
 }
 
 extension QuestionTargetType: TargetType {
@@ -27,12 +27,10 @@ extension QuestionTargetType: TargetType {
     
     var path: String {
         switch self {
-        case .getQuestionnaire, .postQuestionnaire:
-            return "/questionnaire"
-        case .getQuestionnaires:
+        case .getQuestionnaire, .postQuestionnaire, .getQuestionnaires:
             return "/questionnaire"
         case .solveQuestionnaire:
-            return "/me/questionnaires"
+            return "/questionnaire/test"
         }
     }
     
@@ -66,18 +64,27 @@ extension QuestionTargetType: TargetType {
 //            print("🔍 서버로 보낼 데이터: \(parameters)") // 디버깅용 출력
             return .requestParameters(parameters: parameters, encoding: JSONEncoding.default)
             
-        case .solveQuestionnaire(let answerList):
-            return .requestParameters(
-                parameters: [
+        case .solveQuestionnaire(let questionId, let answerList):
+            return .requestCompositeParameters(
+                bodyParameters: [
                     "answerList": answerList
                 ],
-                encoding: JSONEncoding.default
+                bodyEncoding: JSONEncoding.default,
+                urlParameters: ["questionId": questionId]
             )
         }
     }
     
     var headers: [String: String]? {
-        return ["Content-Type": "application/json"]
+        switch self {
+        case .solveQuestionnaire:
+            return [
+                "Content-Type": "application/json",
+                "Authorization": "\(Config.userId)"
+            ]
+        default:
+            return ["Content-Type": "application/json"]
+        }
     }
     
     var validationType: ValidationType {

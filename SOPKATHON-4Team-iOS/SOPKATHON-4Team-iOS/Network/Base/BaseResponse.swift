@@ -13,6 +13,11 @@ struct BaseResponse<T: Codable>: Codable {
     let data: T?
 }
 
+struct QuestionData: Codable {
+    let questionId: Int
+    let questions: [String]
+}
+
 /// data가 없는 API 통신에서 사용할 BlankData 구조체
 struct BlankData: Codable {
 }
