@@ -84,26 +84,19 @@ class SolveViewController: UIViewController {
                 do {
                     let answerCountResponse = try response.map(BaseResponse<Int>.self)
                     
-                    if answerCountResponse.status == 200 {
-                        if let count = answerCountResponse.data {
-                            print("채점이 성공했습니다.. 맞은 개수: \(count)")
-                            completion(.success(count))
-                        } else {
-                            completion(.failure(.networkFail))
-                            print("응답에서 초대 코드를 찾을 수 없습니다.")
-                        }
-                    } else {
+                    guard answerCountResponse.status == 200,
+                          let count = answerCountResponse.data else {
+                        print("채점 실패 : \(answerCountResponse.message)")
                         completion(.failure(.networkFail))
-                        print("질문지 생성 실패: \(answerCountResponse.message)")
+                        return
                     }
                 } catch {
-                    completion(.failure(.networkFail))
+                    completion(.failure(.decodeFail))
                     print("Decoding error: \(error)")
                 }
             case .failure(let error):
                 completion(.failure(.networkFail))
                 print("Network error: \(error)")
-                
             }
         }
     }

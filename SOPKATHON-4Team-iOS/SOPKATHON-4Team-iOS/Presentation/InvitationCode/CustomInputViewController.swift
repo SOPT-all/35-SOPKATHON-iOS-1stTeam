@@ -99,7 +99,7 @@ extension InputViewController {
                     }
                 } catch {
                     print("응답 디코딩 실패: \(error.localizedDescription)")
-                    completion(.failure(.networkFail))
+                    completion(.failure(.decodeFail))
                     self.customInputView.warningButton.isHidden = false
                 }
             case .failure(let error):

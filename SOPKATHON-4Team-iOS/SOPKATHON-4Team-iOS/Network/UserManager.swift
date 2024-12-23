@@ -11,6 +11,7 @@ import Moya
 
 enum FTError: Error {
     case networkFail
+    case decodeFail
     case etc
 }
 
